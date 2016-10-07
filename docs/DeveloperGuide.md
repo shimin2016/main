@@ -255,62 +255,237 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
-`* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new person |
-`* * *` | user | delete a person | remove entries that I no longer need
-`* * *` | user | find a person by name | locate details of persons without having to go through the entire list
-`* *` | user | hide [private contact details](#private-contact-detail) by default | minimize chance of someone else seeing them by accident
-`*` | user with many persons in the address book | sort persons by name | locate a person easily
+`* * *` | As a user I can add a task by specifying a task description only, so that I can record tasks that need to be done ‘some day’. 
+`* * *` | As a user I can add an event, so that I can track the events that I have. 
+`* * *` | As a user I can add a deadline to a task, so that I can organised my time better. 
+`* * *` | As a user I can find upcoming tasks, so that I can decide what needs to be done soon. 
+`* * *` | As a user I can edit a task, so that I can change the details of a task. 
+`* * *` | As a user I can delete a task, so that I can get rid of tasks that I no longer care to track. 
+`* * *` | As a user I can undo an operation, so that I do not need to be afraid to make a mistake. 
+`* * *` | As a new user I can view more information about a particular command, so that I can learn how to use various commands. 
+`* * *` | As a new user I can mark a task as done, so that I will be reminded that I have completed the task and not to worry about it. 
+`* * *` | As an advanced user I can use shorter versions of a command, so that type a command faster. 
+`* * *` | As a user I can specify a specific location to store my data, so that I can choose to store the data file in a local folder controlled by a cloud syncing service, which allowing me to access data from other computers. 
+`* * *` | As a user I can block a multiple timeslot for uncertain time of an event, so that I will not plan something on the uncertain timing.
+`* * *` | As a user I can find a free time slot in my schedule, so that can plan my time better. 
 
-{More to be added}
+
+Nice-to-have-features:
+
+`* *` | As a user I can add a recurring task, so that I do not have to keep adding the same task every week/day. 
+`* *` | As a user I can have an autocomplete search tool, so that it will be easier for me to find a task. 
+`* *` | As a user I can find a task that is similar to what I’m searching, so that I can see similar tasks. 
+`* *` | As a user I can launch the program with key combination (ALT+SPACE), so that I can minimized time spent on clicking. 
+`* *` | As a user I can do everything by typing, so that I can do everything much faster. 
+`* *` | As a user I can do multiple undo, so that If I have a mistake i do not have to trace back and correct it manually. 
+`* *` | As a user I can do multiple redo, so that if I decided not to take the changes from undo, I can go back to use my original file. 
+`* *` | As a user I can have a high flexibility of command format, so that I do not need to memorize or worry about the format of the input. 
+`* *` | As a new user I can have a guided tour for the app, so that I will know how to use the app. 
+`* *` | As a user I can receive feedback while typing, so that I know that i have successfully key in what I typed. 
+
+
+`*` | As a user I can add a tag to a task, so that I know at a glance what the task is for. 
+`*` | As a user I can sort the task by the tag, so that I can see related tasks together. 
+`*` | As a user I can add a sub-task under a task, so that I can break down my task into smaller tasks. 
+`*` | As a user I can add a note to a task, so that I will not forget the details about the task, if there is any. 
+`*` | As a user I can mark a sub-task as done, so that I will not worry about it anymore. 
+`*` | As a user I can set reminder for a task, so that I will not forget to do the task. 
+`*` | As a user I can set/pick the reminder time, so that I can assign reminder according to how long the task need to be completed. 
+
 
 ## Appendix B : Use Cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `FlexiTrack` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: Delete person
+
+####Use case:  UC01 – add new task or event
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows a list of persons
-3. User requests to delete a specific person in the list
-4. AddressBook deletes the person <br>
-Use case ends.
-
+1.User request to add a new task or an event 
+2.System add the data 
+Use case ends
+ 
 **Extensions**
 
-2a. The list is empty
+1a. The user input is invalid 
+	
+> 1a1. System output an invalid input message
+  Use case ends 
 
-> Use case ends
+1b. The user input existing active task or event title 
 
-3a. The given index is invalid
+> 1b1. System output warning message that there is existing active task or event title
+  Use case ends 
+	
+	
+####Use case:  UC02 – add or change deadline 
 
-> 3a1. AddressBook shows an error message <br>
-  Use case resumes at step 2
+**MSS**
 
-{More to be added}
+1.User request to add / change deadline of an existing task  
+2.System add / change the deadline 
+Use case ends
+ 
+**Extensions**
+
+1a. The user input is invalid 
+	
+> 1a1. System output an invalid input message
+  Use case ends 
+
+
+####Use case:  UC03 – sort 
+
+**MSS**
+
+1.User request to sort the existing tasks  
+2.System sort the tasks 	
+Use case ends
+
+
+####Use case:  UC04 – edit 
+
+**MSS**
+
+1.User request to edit an existing task  
+2.System change the detail of the task 	
+Use case ends
+ 
+**Extensions**
+
+1a. The user input is invalid 
+	
+> 1a1. System output an invalid input message
+  Use case ends 
+
+
+####Use case:  UC05 – delete 
+
+**MSS**
+
+1.User request to delete an existing task/event  
+2.System delete the task/event 
+Use case ends
+ 
+**Extensions**
+
+1a. The user input an invalid list number
+	
+> 1a1. System output an invalid input message
+  Use case ends 
+
+
+####Use case:  UC06 – mark 
+
+**MSS**
+
+1.User request to mark an event as done  
+2.System mark the event and move it to the bottom of the list  
+Use case ends
+ 
+**Extensions**
+
+1a. The user input an invalid list number 
+	
+> 1a1. System output an invalid list number 
+  Use case ends 
+
+
+####Use case:  UC07 – specify storage  
+
+**MSS**
+
+1.User request to specify storage   
+2.System move the storage to the specify directory  
+Use case ends
+ 
+**Extensions**
+
+1a. The user input an invalid directory
+	
+> 1a1. System output an invalid directory message 
+  Use case ends 
+
+
+####Use case:  UC08 – block multiple time slot 
+
+**MSS**
+
+1.User request to block an extra time slot for an event   
+2.System block the extra time slot  
+Use case ends
+ 
+**Extensions**
+
+1a. The user input an invalid list number
+	
+> 1a1. System output an invalid list number message
+  Use case ends 
+
+1b. The user select a busy timing (unavailable timing) 
+
+> 1b1. System output an unavailable timing message
+  Use case ends 
+
 
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
-2. Should be able to hold up to 1000 persons.
-3. Should come with automated unit tests and open source code.
-4. Should favor DOS style commands over Unix-style commands.
+2. Should come with automated unit tests and open source code.
+3. User must get the command done within three mouse clicks 
+4. The total file size must be less than 15MB
+5. Search result must be returned in 0.3ms
+6. Buttons and text field must be clearly labeled
+7. Make the more important/urgent tasks stand out
+8. The longer events will look different from shorter events
+9. An event will look differently from a task thus easy to differentiate 
+10.Easy to see free slots 
+11.Intuitive vocabulary and design 
 
 {More to be added}
 
 ## Appendix D : Glossary
 
+#####Active task 
+> A task that have not passed the deadline and have not been marked as done 
+
+#####Active event
+> An event that has not passed yet
+
+#####Event 
+> An occasion that goes on for a period of time. It has a starting time and an ending time. 
+
+#####Task
+> An occasion that need to be completed by a certain date called deadline 
+
 ##### Mainstream OS
 
 > Windows, Linux, Unix, OS-X
 
-##### Private contact detail
-
-> A contact detail that is not meant to be shared with others
 
 ## Appendix E : Product Survey
 
-{TODO: Add a summary of competing products}
+####Google Calendar
+
+#####Pros: 
+> Help to organise schedules and pre-planned them in advance
+> Able to show schedules in multiple view (3 days, day, month or week) format
+> Easy to synchronise planned schedules across multiple devices
+
+
+#####Cons: 
+> Unable to use single line command to add new events
+> Each event creation take up around 2 minutes of the user time to fill up the details
+> Unable to do partial search for a particular event name
+> Confusing timing display on each event. (E.g 11p for night event and 11 for morning event)
+
+
+####Any.Do
+
+#####Pros:
+> Help to add a quick task to the list
+> Able to invite friends in the same event or task
+> Able to send notification to the user before the event start
+> Able to add new task(s) to personalised folder
 

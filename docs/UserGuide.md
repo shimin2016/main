@@ -30,8 +30,8 @@
 ## Features
 
 > **Command Format**
-> * Words in `UPPER_CASE` are the parameters.
-> * Items in `SQUARE_BRACKETS` are optional.
+> * Words in `square brackets ([])` are the parameters.
+> * Items within `arrow signs (<>)` are optional.
 > * Items with `...` after them can have multiple instances.
 > * The order of parameters is fixed.
 
@@ -40,72 +40,134 @@ Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
  
-#### Adding a person: `add`
-Adds a person to the address book<br>
-Format: `add NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` 
-
-> Persons can have any number of tags (including 0)
+#### Adding a task: `add`
+Adds a task to the FlexiTrack.<br>
+Format: `add [task title] < by/ [deadline] >`
 
 Examples: 
-* `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
-* `add Betsy Crowe p/1234567 e/betsycrowe@gmail.com a/Newgate Prison t/criminal t/friend`
+* `add CS2103 tutorial 3 by/ Saturday`
+* `add CS2103 tutorial 3 by/ 22 Oct`
 
-#### Listing all persons : `list`
-Shows a list of all persons in the address book.<br>
-Format: `list`
+#### Adding an event: `add`
+Adds a task to the FlexiTrack.<br>
+Format: `add [event title] from/ [starting time] to/ [ending time]`
 
-#### Finding all persons containing any keyword in their name: `find`
-Finds persons whose names contain any of the given keywords.<br>
+Examples: 
+* `add Bintan trip from/ Saturday to/ Sunday`
+* `add CS2103 Lecture from/ Friday 2pm to/ 4pm `
+
+#### Adding or changing deadline of a task : `deadline`
+Add or change the deadline of a task in FlexiTrack.<br>
+Format: `deadline [list number] [new deadline]`
+
+Examples: 
+* `deadline 3 10 October`
+* `deadline 12 Friday 5pm`
+
+#### Finding a task or an event containing any keyword in their title: `find`
+Finds a task ot an event whose title contain any of the given keywords.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-> * The search is case sensitive. e.g `hans` will not match `Hans`
-> * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-> * Only the name is searched.
-> * Only full words will be matched e.g. `Han` will not match `Hans`
-> * Persons matching at least one keyword will be returned (i.e. `OR` search).
-    e.g. `Hans` will match `Hans Bo`
+> * The search is case sensitive. e.g `soccer` will not match `Soccer`
+> * The order of the keywords does not matter. e.g. `soccer dinner` will match `dinner soccer`
+> * Only the task/event title is searched.
+> * Only full words will be matched e.g. `socc` will not match `soccer`
+> * Task or event matching at least one keyword will be returned (i.e. `OR` search).
+    e.g. `soccer` will match `soccer training`
 
 Examples: 
-* `find John`<br>
-  Returns `John Doe` but not `john`
-* `find Betsy Tim John`<br>
-  Returns Any person having names `Betsy`, `Tim`, or `John`
+* `find Soccer`<br>
+  Returns `Soccer training` but not `soccer training`
+* `find assignment dinner mid-term`<br>
+  Returns Any task/event having title `assignment`, `dinner`, or `mid-term`
 
 #### Deleting a person : `delete`
-Deletes the specified person from the address book. Irreversible.<br>
-Format: `delete INDEX`
+Deletes the specified task/event from the FlexiTrack. Irreversible.<br>
+Format: `delete [index]`
 
-> Deletes the person at the specified `INDEX`. 
+> Deletes the task/event at the specified `index`. 
   The index refers to the index number shown in the most recent listing.<br>
   The index **must be a positive integer** 1, 2, 3, ...
 
 Examples: 
-* `list`<br>
-  `delete 2`<br>
-  Deletes the 2nd person in the address book.
-* `find Betsy`<br> 
+* `delete 2`<br>
+  Deletes the 2nd task/event in the address book.
+* `find soccer`<br> 
   `delete 1`<br>
-  Deletes the 1st person in the results of the `find` command.
+  Deletes the 1st task/event in the results of the `find` command.
 
-#### Select a person : `select`
-Selects the person identified by the index number used in the last person listing.<br>
-Format: `select INDEX`
+#### Undo operations : `undo`
+Undo operation a number of times.<br>
+Format: `undo < [number of undo] >`
 
-> Selects the person and loads the Google search page the person at the specified `INDEX`. 
+> The number of undo parameter is optional. When it is not satisfied, one undo will be done. 
+> The maximum number of undo is 15 
+
+Examples: 
+* `undo`<br>
+  Undo the operation 1 time.
+* `undo 4`<br>
+  Undo the operations 4 times. 
+  
+#### Mark a task as complete : `mark`
+Mark an existing task to complete and move it to the bottom of the list.<br>
+Format: `mark [index]`  
+
+> Mark the taks/event at the specified `index`. 
+  The index refers to the index number shown in the most recent listing.<br>
+  The index **must be a positive integer** 1, 2, 3, ...
+> The marked task will be deleted once the user exit the program 
+
+Examples: 
+* `mark 5`<br>	
+
+#### Specify storage location: `storage`
+Specify the storage location where the program save the data. <br>
+Format: `storage [path]`  
+
+Examples: 
+* `storage C:/Document/Personal/Others `<br>	
+
+#### Block multiple time slot for an event : `block`
+Block another time slot for an unconfirmed existing event.<br>
+Format: `block [starting time] to/ [ending time] for/ [index]`  
+
+> Deletes the task/event at the specified `index`. 
   The index refers to the index number shown in the most recent listing.<br>
   The index **must be a positive integer** 1, 2, 3, ...
 
 Examples: 
-* `list`<br>
-  `select 2`<br>
-  Selects the 2nd person in the address book.
-* `find Betsy` <br> 
-  `select 1`<br>
-  Selects the 1st person in the results of the `find` command.
+* `block Monday 3pm to/ 5pm for/ 3`<br>	
 
-#### Clearing all entries : `clear`
-Clears all entries from the address book.<br>
-Format: `clear`  
+#### Find free time slot: `find time`
+Find and list free time slot in the schedule that is equal to or longer than the specified timing (in hours).<br>
+Format: `find time [number of hours] < [number of slots to find] >`  
+
+> If there is there is a time slot longer than the required free time slot, 
+	then the free time period will be return to the user
+> By default, find time will only give a single free slot when the number of slots required is not keyed in.
+
+Examples: 
+* `find time 3 `<br>	
+	You have a minimum of 3 hours free time slot between: today 5pm - 9pm. 
+* `find time 5 3 `<br>	
+	You have a minimum of 5 hours free time slot between: Monday 2pm - 9pm, Tuesday 1pm - 6pm and Saturday 9am - 5pm. 
+
+#### Use shortcut to key in tasks and events details: `shortcut`
+Enable user to use a shorter command word.<br>
+Format: `enable shortcut`
+Format: `disable shortcut` 
+
+> Existing Command Word 				Shortcut Command word
+> add											a/
+> by 											b/
+> from											f/
+> to											t/
+> delete										d/
+> mark 											m/
+> storage 										s/ 
+> block 										bk/
+> find time 									ft/
 
 #### Exiting the program : `exit`
 Exits the program.<br>
@@ -119,16 +181,19 @@ There is no need to save manually.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with 
-       the file that contains the data of your previous Address Book folder.
+       the file that contains the data of your previous FlexiTrack folder.
        
 ## Command Summary
 
 Command | Format  
 -------- | :-------- 
-Add | `add NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
-Clear | `clear`
+Add task | `add [task title] < by/ [deadline] >`
+Add event | `add [event title] from/ [starting time] to/ [ending time]`
+Deadline | `deadline [index] [new deadline]`
 Delete | `delete INDEX`
 Find | `find KEYWORD [MORE_KEYWORDS]`
-List | `list`
-Help | `help`
-Select | `select INDEX`
+Undo | `undo [number of times]`
+Mark | `mark [index]`
+Storage | `storage [path]`
+Find time | `find time [number of hours] < [number of slots to find] >`
+Block | `block Monday 3pm to/ 5pm for/ 3`

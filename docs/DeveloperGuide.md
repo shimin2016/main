@@ -255,7 +255,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
-`* * *` | As a user | I want add a task by specifying a task description only, so that I can record tasks that need to be done ‘some day’. 
+`* * *` | As a user | I want add a task by specifying a task description only, | So that I can record tasks that need to be done ‘some day’. 
 `* * *` | As a user | I want to add an event, | So that I can track the events that I have. 
 `* * *` | As a user | I want to add a deadline to a task, | So that I can organised my time better. 
 `* * *` | As a user | I want to find upcoming tasks, | So that I can decide what needs to be done soon. 
@@ -268,10 +268,6 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | As a user | I want to specify a specific location to store my data, | So that I can choose to store the data file in a local folder controlled by a cloud syncing service, which allowing me to access data from other computers. 
 `* * *` | As a user | I want to block a multiple timeslot for uncertain time of an event, | So that I will not plan something on the uncertain timing.
 `* * *` | As a user | I want to find a free time slot in my schedule, | So that can plan my time better. 
-
-
-Nice-to-have-features:
-
 `* *` | As a user | I want to add a recurring task, | So that I do not have to keep adding the same task every week/day. 
 `* *` | As a user | I want to have an autocomplete search tool, | So that it will be easier for me to find a task. 
 `* *` | As a user | I want to find a task that is similar to what I’m searching, | So that I can see similar tasks. 
@@ -282,8 +278,6 @@ Nice-to-have-features:
 `* *` | As a user | I want to have a high flexibility of command format, | So that I do not need to memorize or worry about the format of the input. 
 `* *` | As a new user | I want to have a guided tour for the app, | So that I will know how to use the app. 
 `* *` | As a user | I want to receive feedback while typing, | So that I know that i have successfully key in what I typed. 
-
-
 `*` | As a user | I want to add a tag to a task, | So that I know at a glance what the task is for. 
 `*` | As a user | I want to sort the task by the tag, | So that I can see related tasks together. 
 `*` | As a user | I want to add a sub-task under a task, | So that I can break down my task into smaller tasks. 
@@ -310,13 +304,13 @@ Use case ends
 
 1a. The user input is invalid 
 	
-> 1a1. System output an invalid input message
-> Use case ends 
+  > 1a1. System output an invalid input message
+  > Use case ends 
 
 1b. The user input existing active task or event title 
 
-> 1b1. System output warning message that there is existing active task or event title
-> Use case ends 
+  > 1b1. System output warning message that there is existing active task or event title
+  > Use case ends 
 	
 	
 ####Use case:  UC02 – add or change deadline 
@@ -331,8 +325,8 @@ Use case ends
 
 1a. The user input is invalid 
 	
-> 1a1. System output an invalid input message
-> Use case ends 
+  > 1a1. System output an invalid input message
+  > Use case ends 
 
 
 ####Use case:  UC03 – sort 
@@ -356,8 +350,8 @@ Use case ends
 
 1a. The user input is invalid 
 	
-> 1a1. System output an invalid input message
-> Use case ends 
+  > 1a1. System output an invalid input message
+  > Use case ends 
 
 
 ####Use case:  UC05 – delete 
@@ -372,8 +366,8 @@ Use case ends
 
 1a. The user input an invalid list number
 	
-> 1a1. System output an invalid input message
-> Use case ends 
+  > 1a1. System output an invalid input message
+  > Use case ends 
 
 
 ####Use case:  UC06 – mark 
@@ -388,8 +382,8 @@ Use case ends
 
 1a. The user input an invalid list number 
 	
-> 1a1. System output an invalid list number 
-> Use case ends 
+  > 1a1. System output an invalid list number 
+  > Use case ends 
 
 
 ####Use case:  UC07 – specify storage  
@@ -404,8 +398,8 @@ Use case ends
 
 1a. The user input an invalid directory
 	
-> 1a1. System output an invalid directory message 
-> Use case ends 
+  > 1a1. System output an invalid directory message 
+  > Use case ends 
 
 
 ####Use case:  UC08 – block multiple time slot 
@@ -420,13 +414,13 @@ Use case ends
 
 1a. The user input an invalid list number
 	
-> 1a1. System output an invalid list number message
-> Use case ends 
+  > 1a1. System output an invalid list number message
+  > Use case ends 
 
 1b. The user select a busy timing (unavailable timing) 
 
-> 1b1. System output an unavailable timing message
-> Use case ends 
+  > 1b1. System output an unavailable timing message
+  > Use case ends 
 
 
 ## Appendix C : Non Functional Requirements

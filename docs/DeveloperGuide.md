@@ -255,42 +255,42 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
-`* * *` | As a user I can add a task by specifying a task description only, so that I can record tasks that need to be done ‘some day’. 
-`* * *` | As a user I can add an event, so that I can track the events that I have. 
-`* * *` | As a user I can add a deadline to a task, so that I can organised my time better. 
-`* * *` | As a user I can find upcoming tasks, so that I can decide what needs to be done soon. 
-`* * *` | As a user I can edit a task, so that I can change the details of a task. 
-`* * *` | As a user I can delete a task, so that I can get rid of tasks that I no longer care to track. 
-`* * *` | As a user I can undo an operation, so that I do not need to be afraid to make a mistake. 
-`* * *` | As a new user I can view more information about a particular command, so that I can learn how to use various commands. 
-`* * *` | As a new user I can mark a task as done, so that I will be reminded that I have completed the task and not to worry about it. 
-`* * *` | As an advanced user I can use shorter versions of a command, so that type a command faster. 
-`* * *` | As a user I can specify a specific location to store my data, so that I can choose to store the data file in a local folder controlled by a cloud syncing service, which allowing me to access data from other computers. 
-`* * *` | As a user I can block a multiple timeslot for uncertain time of an event, so that I will not plan something on the uncertain timing.
-`* * *` | As a user I can find a free time slot in my schedule, so that can plan my time better. 
+`* * *` | As a user | I want add a task by specifying a task description only, so that I can record tasks that need to be done ‘some day’. 
+`* * *` | As a user | I want to add an event, | So that I can track the events that I have. 
+`* * *` | As a user | I want to add a deadline to a task, | So that I can organised my time better. 
+`* * *` | As a user | I want to find upcoming tasks, | So that I can decide what needs to be done soon. 
+`* * *` | As a user | I want to edit a task, | So that I can change the details of a task. 
+`* * *` | As a user | I want to delete a task, | So that I can get rid of tasks that I no longer care to track. 
+`* * *` | As a user | I want to undo an operation, | So that I do not need to be afraid to make a mistake. 
+`* * *` | As a new user | I want to view more information about a particular command, | So that I can learn how to use various commands. 
+`* * *` | As a new user | I want to mark a task as done, | So that I will be reminded that I have completed the task and not to worry about it. 
+`* * *` | As an advanced user | I want to use shorter versions of a command, | So that type a command faster. 
+`* * *` | As a user | I want to specify a specific location to store my data, | So that I can choose to store the data file in a local folder controlled by a cloud syncing service, which allowing me to access data from other computers. 
+`* * *` | As a user | I want to block a multiple timeslot for uncertain time of an event, | So that I will not plan something on the uncertain timing.
+`* * *` | As a user | I want to find a free time slot in my schedule, | So that can plan my time better. 
 
 
 Nice-to-have-features:
 
-`* *` | As a user I can add a recurring task, so that I do not have to keep adding the same task every week/day. 
-`* *` | As a user I can have an autocomplete search tool, so that it will be easier for me to find a task. 
-`* *` | As a user I can find a task that is similar to what I’m searching, so that I can see similar tasks. 
-`* *` | As a user I can launch the program with key combination (ALT+SPACE), so that I can minimized time spent on clicking. 
-`* *` | As a user I can do everything by typing, so that I can do everything much faster. 
-`* *` | As a user I can do multiple undo, so that If I have a mistake i do not have to trace back and correct it manually. 
-`* *` | As a user I can do multiple redo, so that if I decided not to take the changes from undo, I can go back to use my original file. 
-`* *` | As a user I can have a high flexibility of command format, so that I do not need to memorize or worry about the format of the input. 
-`* *` | As a new user I can have a guided tour for the app, so that I will know how to use the app. 
-`* *` | As a user I can receive feedback while typing, so that I know that i have successfully key in what I typed. 
+`* *` | As a user | I want to add a recurring task, | So that I do not have to keep adding the same task every week/day. 
+`* *` | As a user | I want to have an autocomplete search tool, | So that it will be easier for me to find a task. 
+`* *` | As a user | I want to find a task that is similar to what I’m searching, | So that I can see similar tasks. 
+`* *` | As a user | I want to launch the program with key combination (ALT+SPACE), | So that I can minimized time spent on clicking. 
+`* *` | As a user | I want to do everything by typing, | So that I can do everything much faster. 
+`* *` | As a user | I want to do multiple undo, | So that If I have a mistake i do not have to trace back and correct it manually. 
+`* *` | As a user | I want to do multiple redo, | So that if I decided not to take the changes from undo, I can go back to use my original file. 
+`* *` | As a user | I want to have a high flexibility of command format, | So that I do not need to memorize or worry about the format of the input. 
+`* *` | As a new user | I want to have a guided tour for the app, | So that I will know how to use the app. 
+`* *` | As a user | I want to receive feedback while typing, | So that I know that i have successfully key in what I typed. 
 
 
-`*` | As a user I can add a tag to a task, so that I know at a glance what the task is for. 
-`*` | As a user I can sort the task by the tag, so that I can see related tasks together. 
-`*` | As a user I can add a sub-task under a task, so that I can break down my task into smaller tasks. 
-`*` | As a user I can add a note to a task, so that I will not forget the details about the task, if there is any. 
-`*` | As a user I can mark a sub-task as done, so that I will not worry about it anymore. 
-`*` | As a user I can set reminder for a task, so that I will not forget to do the task. 
-`*` | As a user I can set/pick the reminder time, so that I can assign reminder according to how long the task need to be completed. 
+`*` | As a user | I want to add a tag to a task, | So that I know at a glance what the task is for. 
+`*` | As a user | I want to sort the task by the tag, | So that I can see related tasks together. 
+`*` | As a user | I want to add a sub-task under a task, | So that I can break down my task into smaller tasks. 
+`*` | As a user | I want to add a note to a task, | So that I will not forget the details about the task, if there is any. 
+`*` | As a user | I want to mark a sub-task as done, | So that I will not worry about it anymore. 
+`*` | As a user | I want to set reminder for a task, | So that I will not forget to do the task. 
+`*` | As a user | I want to set/pick the reminder time, | So that I can assign reminder according to how long the task need to be completed. 
 
 
 ## Appendix B : Use Cases

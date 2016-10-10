@@ -311,12 +311,12 @@ Use case ends
 1a. The user input is invalid 
 	
 > 1a1. System output an invalid input message
-  Use case ends 
+> Use case ends 
 
 1b. The user input existing active task or event title 
 
 > 1b1. System output warning message that there is existing active task or event title
-  Use case ends 
+> Use case ends 
 	
 	
 ####Use case:  UC02 – add or change deadline 
@@ -332,7 +332,7 @@ Use case ends
 1a. The user input is invalid 
 	
 > 1a1. System output an invalid input message
-  Use case ends 
+> Use case ends 
 
 
 ####Use case:  UC03 – sort 
@@ -357,7 +357,7 @@ Use case ends
 1a. The user input is invalid 
 	
 > 1a1. System output an invalid input message
-  Use case ends 
+> Use case ends 
 
 
 ####Use case:  UC05 – delete 
@@ -373,7 +373,7 @@ Use case ends
 1a. The user input an invalid list number
 	
 > 1a1. System output an invalid input message
-  Use case ends 
+> Use case ends 
 
 
 ####Use case:  UC06 – mark 
@@ -389,7 +389,7 @@ Use case ends
 1a. The user input an invalid list number 
 	
 > 1a1. System output an invalid list number 
-  Use case ends 
+> Use case ends 
 
 
 ####Use case:  UC07 – specify storage  
@@ -405,7 +405,7 @@ Use case ends
 1a. The user input an invalid directory
 	
 > 1a1. System output an invalid directory message 
-  Use case ends 
+> Use case ends 
 
 
 ####Use case:  UC08 – block multiple time slot 
@@ -421,12 +421,12 @@ Use case ends
 1a. The user input an invalid list number
 	
 > 1a1. System output an invalid list number message
-  Use case ends 
+> Use case ends 
 
 1b. The user select a busy timing (unavailable timing) 
 
 > 1b1. System output an unavailable timing message
-  Use case ends 
+> Use case ends 
 
 
 ## Appendix C : Non Functional Requirements

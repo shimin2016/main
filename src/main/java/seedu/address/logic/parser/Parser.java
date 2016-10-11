@@ -1,9 +1,12 @@
 package seedu.address.logic.parser;
 
 import seedu.address.logic.commands.*;
+import seedu.address.model.task.DateTimeInfo;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.exceptions.IllegalValueException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +29,21 @@ public class Parser {
     private static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
+    private static final Pattern FLOATTASK_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<floatTask>[^/]+)"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+    
+    private static final Pattern TASK_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<task>[^/]+)"
+                    + " -by(?<dueDate>[\\d+]+-[\\d+]+-[\\d+])"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+    
+    private static final Pattern EVENT_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<event>[^/]+)"
+                    + " -from(?<startTime>[\\d+]+-[\\d+]+-[\\d+])"
+                    + " -to(?<endTime>[\\d+]+-[\\d+]+-[\\d+])"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+    
     private static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
@@ -40,8 +58,9 @@ public class Parser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
+     * @throws ParseException 
      */
-    public Command parseCommand(String userInput) {
+    public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -85,24 +104,86 @@ public class Parser {
      *
      * @param args full command args string
      * @return the prepared command
+     * @throws ParseException 
      */
-    private Command prepareAdd(String args){
-        final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
+    private Command prepareAdd(String args) throws ParseException{
+        final Matcher task_matcher = TASK_ARGS_FORMAT.matcher(args.trim());
+        final Matcher event_matcher = EVENT_ARGS_FORMAT.matcher(args.trim());
+        final Matcher floatTask_matcher = FLOATTASK_ARGS_FORMAT.matcher(args.trim());
+        boolean isTask = args.contains("-by");
+        boolean isEvent = args.contains("-from");
+        DateTimeInfo dateTimeInfo;
+        Calendar dueDate=Calendar.getInstance();
+        Calendar startTime=Calendar.getInstance();
+        Calendar endTime=Calendar.getInstance();
         // Validate arg string format
-        if (!matcher.matches()) {
+        if ((args.contains("-by") && !task_matcher.matches()) ||
+                (args.contains("-from") && !event_matcher.matches())) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
-        try {
+        if(isTask) {
+            startTime = endTime = null;
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+            Date date = sdf.parse(task_matcher.group("dueDate"));
+            dueDate.setTime(date);
+            dateTimeInfo = new DateTimeInfo(dueDate,startTime,endTime);
+            try {
+                return new AddCommand(
+                        task_matcher.group("task"),
+                        dateTimeInfo,
+                        isTask,
+                        isEvent,
+                        getTagsFromArgs(task_matcher.group("tagArguments"))
+                );
+            }catch (IllegalValueException ive) {
+                return new IncorrectCommand(ive.getMessage());
+            }
+        }else if(isEvent) {
+            dueDate = null;
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+            Date date = sdf.parse(task_matcher.group("startTime"));
+            startTime.setTime(date);
+            date = sdf.parse(task_matcher.group("endTime"));
+            endTime.setTime(date);
+            dateTimeInfo = new DateTimeInfo(dueDate,startTime,endTime);
+            try {
+                return new AddCommand(
+                        task_matcher.group("task"),
+                        dateTimeInfo,
+                        isTask,
+                        isEvent,
+                        getTagsFromArgs(task_matcher.group("tagArguments"))
+                );
+            }catch (IllegalValueException ive) {
+                return new IncorrectCommand(ive.getMessage());
+            }
+        }else {
+            dueDate = startTime = endTime = null;
+            dateTimeInfo = new DateTimeInfo(dueDate,startTime,endTime);
+            try {
+                return new AddCommand(
+                        task_matcher.group("task"),
+                        dateTimeInfo,
+                        isTask,
+                        isEvent,
+                        getTagsFromArgs(task_matcher.group("tagArguments"))
+                );
+            }catch (IllegalValueException ive) {
+                return new IncorrectCommand(ive.getMessage());
+            }
+        }
+/*        try {
+            if(args.contains("-by"))
             return new AddCommand(
-                    matcher.group("name"),
-                    matcher.group("phone"),
-                    matcher.group("email"),
-                    matcher.group("address"),
-                    getTagsFromArgs(matcher.group("tagArguments"))
+                    task_matcher.group("task"),
+                    dateTimeInfo,
+                    isTask,
+                    isEvent,
+                    getTagsFromArgs(task_matcher.group("tagArguments"))
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
-        }
+        }*/
     }
 
     /**

@@ -8,8 +8,10 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.parser.Parser;
 import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.storage.Storage;
 
+import java.text.ParseException;
 import java.util.logging.Logger;
 
 /**
@@ -27,7 +29,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public CommandResult execute(String commandText) {
+    public CommandResult execute(String commandText) throws ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
         Command command = parser.parseCommand(commandText);
         command.setData(model);
@@ -35,7 +37,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public ObservableList<ReadOnlyPerson> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<ReadOnlyTask> getFilteredTaskList() {
+        return model.getFilteredTaskList();
     }
 }

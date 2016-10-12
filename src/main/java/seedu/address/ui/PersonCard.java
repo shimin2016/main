@@ -13,15 +13,11 @@ public class PersonCard extends UiPart{
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label title;
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
+    private Label dateTimeInfo;
     @FXML
     private Label tags;
 
@@ -43,12 +39,10 @@ public class PersonCard extends UiPart{
     public void initialize() {
         String dateInfo = (task.getIsTask()||task.getIsEvent())?(task.getIsTask()?" by " + task.getDueDate():
             " from " + task.getStartTime() +" to "+ task.getEndTime()):"";
-        name.setText(task.getName().fullName);
+        title.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
-        phone.setText(dateInfo);
-        address.setText(" ");
-        email.setText(" ");
-        tags.setText(" ");
+        dateTimeInfo.setText(dateInfo);
+        tags.setText(task.tagsString());
     }
 
     public HBox getLayout() {

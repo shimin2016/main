@@ -17,7 +17,7 @@ public class PersonCard extends UiPart{
     @FXML
     private Label id;
     @FXML
-    private Label dateTimeInfo;
+    private Label dateTime;
     @FXML
     private Label tags;
 
@@ -37,11 +37,17 @@ public class PersonCard extends UiPart{
 
     @FXML
     public void initialize() {
-        String dateInfo = (task.getIsTask()||task.getIsEvent())?(task.getIsTask()?" by " + task.getDueDate():
-            " from " + task.getStartTime() +" to "+ task.getEndTime()):"";
+    	String dateInfo;
+    	if(task.getIsTask()){
+    	    dateInfo = " by " + task.getDueDate();
+    	}else if(task.getIsEvent()){
+    	    dateInfo =  " from " + task.getStartTime() +" to "+ task.getEndTime();
+    	}else{
+    	    dateInfo = "";
+    	}
+    	dateTime.setText(dateInfo);
         title.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
-        dateTimeInfo.setText(dateInfo);
         tags.setText(task.tagsString());
     }
 

@@ -31,7 +31,9 @@
                                 <Label fx:id="tags" styleClass="cell_small_label" text="\$tags" />
                             </children>
                         </HBox>
-                        <Label fx:id="dateTimeInfo" styleClass="cell_small_label" text="\$dateTimeInfo" />
+                        <HBox>
+                            <Label fx:id="dateTime" styleClass="cell_small_label" text="\$dateTime" />
+                        </HBox>
                     </children>
                 </VBox>
             </children>

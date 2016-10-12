@@ -5,6 +5,7 @@ import com.joestelmach.natty.*;
 
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.parser.Parser;
 
 
 /**
@@ -66,6 +67,6 @@ public class DateTimeInfo {
     }
 
     public boolean isDateNull() {
-       return this.setTime == "00000000";
+       return this.setTime.equals(Parser.EMPTY_TIME_INFO);
     }
 }

@@ -17,6 +17,10 @@ public class XmlAdaptedTask {
 
     @XmlElement(required = true)
     private String name;
+//    @XmlElement(required = true)
+//    private Boolean isEvent;
+//    @XmlElement(required = true)
+//    private Boolean isTask;
     @XmlElement
     private String dueDate;
     @XmlElement
@@ -40,9 +44,9 @@ public class XmlAdaptedTask {
      */
     public XmlAdaptedTask(ReadOnlyTask source) {
         name = source.getName().fullName;
-        dueDate = source.getDueDate().setTime==null? "00000000":source.getDueDate().setTime;
-        startTime = source.getStartTime().setTime ==null? "11111111": source.getStartTime().setTime;
-        endTime = source.getEndTime().setTime ==null? "22222222" : source.getEndTime().setTime;
+        dueDate = source.getDueDate().setTime;
+        startTime = source.getStartTime().setTime;
+        endTime = source.getEndTime().setTime;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -60,9 +64,9 @@ public class XmlAdaptedTask {
             personTags.add(tag.toModelType());
         }
         final Name name = new Name(this.name);
-        final DateTimeInfo dueDate = new DateTimeInfo(this.dueDate==null?"01000000":this.dueDate);
-        final DateTimeInfo startTime = new DateTimeInfo(this.startTime==null?"12111111":this.startTime);
-        final DateTimeInfo endTime = new DateTimeInfo(this.endTime==null?"23222222":this.endTime);
+        final DateTimeInfo dueDate = new DateTimeInfo(this.dueDate);
+        final DateTimeInfo startTime = new DateTimeInfo(this.startTime);
+        final DateTimeInfo endTime = new DateTimeInfo(this.endTime);
         final UniqueTagList tags = new UniqueTagList(personTags);
         return new Task(name, dueDate,startTime,endTime, tags);
     }

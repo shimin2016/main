@@ -25,14 +25,22 @@ public class Parser {
 
     private static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
-    
-    private static final Pattern TASK_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+
+    private static final Pattern TASK_EVENT_TYPE_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
-                    + " (?<isPhonePrivate>p?)by/(?<dueDate>[^/]+)"
-                    + " (?<isEmailPrivate>p?)from/(?<startTime>[^/]+)"
-                    + " (?<isAddressPrivate>p?)to/(?<endTime>[^/]+)"
+                    + "from/(?<startTime>[^/]+)"
+                    + "to/(?<endTime>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
-    
+
+    private static final Pattern TASK_DEADLINE_TYPE_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<name>[^/]+)"
+                    + "by/(?<dueDate>[^/]+)"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+
+    private static final Pattern TASK_FLOATING_TYPE_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<name>[^/]+)"
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+
     private static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
@@ -94,22 +102,50 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareAdd(String args){
-        final Matcher matcher = TASK_DATA_ARGS_FORMAT.matcher(args.trim());
+        final Matcher matcherEvent = TASK_EVENT_TYPE_DATA_ARGS_FORMAT.matcher(args.trim());
+        final Matcher matcherDeadline = TASK_DEADLINE_TYPE_DATA_ARGS_FORMAT.matcher(args.trim());
+        final Matcher matcherFloating = TASK_FLOATING_TYPE_DATA_ARGS_FORMAT.matcher(args.trim());
         // Validate arg string format
-        if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-        }
-        try {
-            return new AddCommand(
-                    matcher.group("name"),
-                    (matcher.group("dueDate").equals("")||matcher.group("dueDate")==null?"00000000":matcher.group("dueDate")),
-                    (matcher.group("startTime").equals("")||matcher.group("startTime")==null?"11111111":matcher.group("startTime")),
-                    (matcher.group("endTime").equals("")||matcher.group("endTime")==null?"22222222":matcher.group("endTime")),
-                    getTagsFromArgs(matcher.group("tagArguments"))
-            );
-        } catch (IllegalValueException ive) {
+        try{
+            if (matcherEvent.matches()) {
+                return addEventTask(matcherEvent);
+            } else if (matcherDeadline.matches()){
+                return addDeadlineTask(matcherDeadline);
+            } else if (matcherFloating.matches()){
+                return addFloatingTask(matcherFloating);
+            } else {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            }
+        }catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
+    }
+
+    private AddCommand addFloatingTask(Matcher matcher) throws IllegalValueException {
+        return new AddCommand(
+                matcher.group("name"),
+                "00000000","00000000","000000",
+                getTagsFromArgs(matcher.group("tagArguments"))
+                );
+    }
+
+    private AddCommand addDeadlineTask(Matcher matcher) throws IllegalValueException {
+        return new AddCommand(
+                matcher.group("name"),
+                matcher.group("dueDate"),
+                "00000000","000000",
+                getTagsFromArgs(matcher.group("tagArguments"))
+                );
+    }
+
+    private AddCommand addEventTask(Matcher matcher) throws IllegalValueException {
+        return new AddCommand(
+                matcher.group("name"),
+                "00000000",
+                matcher.group("startTime"),
+                matcher.group("endTime"),
+                getTagsFromArgs(matcher.group("tagArguments"))
+                );
     }
 
     /**

@@ -66,4 +66,8 @@ public class DateTimeInfo {
     public int hashCode() {
         return setTime.hashCode();
     }
+
+    public boolean isDateNull() {
+       return this.setTime == "00000000";
+    }
 }

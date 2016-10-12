@@ -25,7 +25,7 @@ public class PersonCard extends UiPart{
     @FXML
     private Label tags;
 
-    private ReadOnlyTask person;
+    private ReadOnlyTask task;
     private int displayedIndex;
 
     public PersonCard(){
@@ -34,21 +34,21 @@ public class PersonCard extends UiPart{
 
     public static PersonCard load(ReadOnlyTask person, int displayedIndex){
         PersonCard card = new PersonCard();
-        card.person = person;
+        card.task = person;
         card.displayedIndex = displayedIndex;
         return UiPartLoader.loadUiPart(card);
     }
 
     @FXML
     public void initialize() {
-        String dateInfo = (person.getIsTask()||person.getIsEvent())?(person.getIsTask()?" by " + person.getDueDate():
-            " from " + person.getStartTime() +" to "+ person.getEndTime()):"";
-        name.setText(person.getName().fullName);
+        String dateInfo = (task.getIsTask()||task.getIsEvent())?(task.getIsTask()?" by " + task.getDueDate():
+            " from " + task.getStartTime() +" to "+ task.getEndTime()):"";
+        name.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
         phone.setText(dateInfo);
 /*        address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);*/
-        tags.setText(person.tagsString());
+        tags.setText(task.tagsString());
     }
 
     public HBox getLayout() {

@@ -19,7 +19,6 @@ public class Task implements ReadOnlyTask {
     private boolean isTask;
 
     private UniqueTagList tags;
-
     /**
      * Every field must be present and not null.
      */
@@ -30,8 +29,8 @@ public class Task implements ReadOnlyTask {
         this.startTime = startTime;
         this.endTime = endTime;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
-        this.isTask = dueDate==null?false:true;
-        this.isEvent = startTime==null?false:true;
+        this.isTask = dueDate.isDateNull()?false:true;
+        this.isEvent = startTime.isDateNull()?false:true;
     }
 
     /**

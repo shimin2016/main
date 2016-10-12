@@ -1,10 +1,8 @@
 package seedu.address.model.person;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+
+import com.joestelmach.natty.*;
+
 
 import seedu.address.commons.exceptions.IllegalValueException;
 

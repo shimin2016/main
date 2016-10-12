@@ -41,13 +41,8 @@ public class Parser {
             Pattern.compile("(?<name>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
-    private static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
-            Pattern.compile("(?<name>[^/]+)"
-                    + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
-                    + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
-                    + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
-                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
-
+    final String EMPTY_TIME_INFO = "00000000";
+    
     public Parser() {}
 
     /**
@@ -124,7 +119,7 @@ public class Parser {
     private AddCommand addFloatingTask(Matcher matcher) throws IllegalValueException {
         return new AddCommand(
                 matcher.group("name"),
-                "00000000","00000000","000000",
+                EMPTY_TIME_INFO,EMPTY_TIME_INFO,EMPTY_TIME_INFO,
                 getTagsFromArgs(matcher.group("tagArguments"))
                 );
     }
@@ -133,7 +128,7 @@ public class Parser {
         return new AddCommand(
                 matcher.group("name"),
                 matcher.group("dueDate"),
-                "00000000","000000",
+                EMPTY_TIME_INFO,EMPTY_TIME_INFO,
                 getTagsFromArgs(matcher.group("tagArguments"))
                 );
     }
@@ -141,7 +136,7 @@ public class Parser {
     private AddCommand addEventTask(Matcher matcher) throws IllegalValueException {
         return new AddCommand(
                 matcher.group("name"),
-                "00000000",
+                EMPTY_TIME_INFO,
                 matcher.group("startTime"),
                 matcher.group("endTime"),
                 getTagsFromArgs(matcher.group("tagArguments"))

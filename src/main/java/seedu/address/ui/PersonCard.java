@@ -46,9 +46,9 @@ public class PersonCard extends UiPart{
         name.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
         phone.setText(dateInfo);
-/*        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);*/
-        tags.setText(task.tagsString());
+        address.setText(" ");
+        email.setText(" ");
+        tags.setText(" ");
     }
 
     public HBox getLayout() {

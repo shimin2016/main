@@ -60,6 +60,8 @@ allprojects {
             exclude group: "junit", module: "junit"
         }
         testCompile "org.testfx:openjfx-monocle:$monocleVersion"
+        
+        compile group: 'com.joestelmach', name: 'natty', version: '0.12'
     }
     
     sourceSets {

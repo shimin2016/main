@@ -76,7 +76,7 @@ public abstract class AddressBookGuiTest {
      * Return null to use the data in the file specified in {@link #getDataFileLocation()}
      */
     protected FlexiTrack getInitialData() {
-        FlexiTrack ab = TestUtil.generateEmptyAddressBook();
+        FlexiTrack ab = TestUtil.generateEmptyFlexiTrack();
         TypicalTestPersons.loadAddressBookWithSampleData(ab);
         return ab;
     }
@@ -98,7 +98,7 @@ public abstract class AddressBookGuiTest {
      * Asserts the person shown in the card is same as the given person
      */
     public void assertMatching(ReadOnlyTask person, PersonCardHandle card) {
-        assertTrue(TestUtil.compareCardAndPerson(card, person));
+        assertTrue(TestUtil.compareCardAndTask(card, person));
     }
 
     /**

@@ -16,7 +16,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute() {
         assert model != null;
-        model.resetData(FlexiTrack.getEmptyAddressBook());
+        model.resetData(FlexiTrack.getEmptyFlexiTrack());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

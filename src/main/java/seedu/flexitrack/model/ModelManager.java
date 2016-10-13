@@ -16,28 +16,28 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the tasktracker data.
  * All changes to any model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final FlexiTrack addressBook;
-    private final FilteredList<Task> filteredPersons;
+    private final FlexiTrack flexiTracker;
+    private final FilteredList<Task> filteredTasks;
 
     /**
-     * Initializes a ModelManager with the given AddressBook
-     * AddressBook and its variables should not be null
+     * Initializes a ModelManager with the given FlexiTracker
+     * FlexiTracker and its variables should not be null
      */
     public ModelManager(FlexiTrack src, UserPrefs userPrefs) {
         super();
         assert src != null;
         assert userPrefs != null;
 
-        logger.fine("Initializing with address book: " + src + " and user prefs " + userPrefs);
+        logger.fine("Initializing with tasktracker: " + src + " and user prefs " + userPrefs);
 
-        addressBook = new FlexiTrack(src);
-        filteredPersons = new FilteredList<>(addressBook.getTasks());
+        flexiTracker = new FlexiTrack(src);
+        filteredTasks = new FilteredList<>(flexiTracker.getTasks());
     }
 
     public ModelManager() {
@@ -45,70 +45,70 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ModelManager(ReadOnlyFlexiTrack initialData, UserPrefs userPrefs) {
-        addressBook = new FlexiTrack(initialData);
-        filteredPersons = new FilteredList<>(addressBook.getTasks());
+        flexiTracker = new FlexiTrack(initialData);
+        filteredTasks = new FilteredList<>(flexiTracker.getTasks());
     }
 
     @Override
     public void resetData(ReadOnlyFlexiTrack newData) {
-        addressBook.resetData(newData);
-        indicateAddressBookChanged();
+        flexiTracker.resetData(newData);
+        indicateFlexiTrackerChanged();
     }
 
     @Override
-    public ReadOnlyFlexiTrack getAddressBook() {
-        return addressBook;
+    public ReadOnlyFlexiTrack getFlexiTrack() {
+        return flexiTracker;
     }
 
     /** Raises an event to indicate the model has changed */
-    private void indicateAddressBookChanged() {
-        raise(new FlexiTrackChangedEvent(addressBook));
+    private void indicateFlexiTrackerChanged() {
+        raise(new FlexiTrackChangedEvent(flexiTracker));
     }
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        addressBook.removePerson(target);
-        indicateAddressBookChanged();
+        flexiTracker.removeTask(target);
+        indicateFlexiTrackerChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws DuplicateTaskException {
-        addressBook.addTask(task);
+        flexiTracker.addTask(task);
         updateFilteredListToShowAll();
-        indicateAddressBookChanged();
+        indicateFlexiTrackerChanged();
     }
 
     @Override
     public void markTask(int targetIndex) {
-        addressBook.markTask(targetIndex);
-        indicateAddressBookChanged();
+        flexiTracker.markTask(targetIndex);
+        indicateFlexiTrackerChanged();
     }
 
-    //=========== Filtered Person List Accessors ===============================================================
+    //=========== Filtered Tasks List Accessors ===============================================================
 
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
-        return new UnmodifiableObservableList<>(filteredPersons);
+        return new UnmodifiableObservableList<>(filteredTasks);
     }
 
     @Override
     public void updateFilteredListToShowAll() {
-        filteredPersons.setPredicate(null);
+        filteredTasks.setPredicate(null);
     }
 
     @Override
     public void updateFilteredTaskList(Set<String> keywords){
-        updateFilteredPersonList(new PredicateExpression(new NameQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywords)));
     }
 
-    private void updateFilteredPersonList(Expression expression) {
-        filteredPersons.setPredicate(expression::satisfies);
+    private void updateFilteredTaskList(Expression expression) {
+        filteredTasks.setPredicate(expression::satisfies);
     }
 
     //========== Inner classes/interfaces used for filtering ==================================================
 
     interface Expression {
-        boolean satisfies(ReadOnlyTask person);
+        boolean satisfies(ReadOnlyTask task);
         String toString();
     }
 
@@ -121,8 +121,8 @@ public class ModelManager extends ComponentManager implements Model {
         }
 
         @Override
-        public boolean satisfies(ReadOnlyTask person) {
-            return qualifier.run(person);
+        public boolean satisfies(ReadOnlyTask task) {
+            return qualifier.run(task);
         }
 
         @Override
@@ -132,7 +132,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     interface Qualifier {
-        boolean run(ReadOnlyTask person);
+        boolean run(ReadOnlyTask task);
         String toString();
     }
 
@@ -144,9 +144,9 @@ public class ModelManager extends ComponentManager implements Model {
         }
 
         @Override
-        public boolean run(ReadOnlyTask person) {
+        public boolean run(ReadOnlyTask task) {
             return nameKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword))
+                    .filter(keyword -> StringUtil.containsIgnoreCase(task.getName().fullName, keyword))
                     .findAny()
                     .isPresent();
         }

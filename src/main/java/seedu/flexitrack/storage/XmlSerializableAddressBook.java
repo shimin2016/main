@@ -39,7 +39,7 @@ public class XmlSerializableAddressBook implements ReadOnlyFlexiTrack {
      * Conversion
      */
     public XmlSerializableAddressBook(ReadOnlyFlexiTrack src) {
-        persons.addAll(src.getPersonList().stream().map(XmlAdaptedTask::new).collect(Collectors.toList()));
+        persons.addAll(src.getTaskList().stream().map(XmlAdaptedTask::new).collect(Collectors.toList()));
         tags = src.getTagList();
     }
 
@@ -68,7 +68,7 @@ public class XmlSerializableAddressBook implements ReadOnlyFlexiTrack {
     }
 
     @Override
-    public List<ReadOnlyTask> getPersonList() {
+    public List<ReadOnlyTask> getTaskList() {
         return persons.stream().map(p -> {
             try {
                 return p.toModelType();

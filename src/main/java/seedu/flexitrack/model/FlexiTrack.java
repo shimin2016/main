@@ -28,20 +28,20 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
     public FlexiTrack() {}
 
     /**
-     * Persons and Tags are copied into this taskstracker
+     * Tasks are copied into this taskstracker
      */
     public FlexiTrack(ReadOnlyFlexiTrack toBeCopied) {
         this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
     }
 
     /**
-     * Persons and Tags are copied into this taskstracker
+     * Tasks are copied into this taskstracker
      */
     public FlexiTrack(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
 
-    public static ReadOnlyFlexiTrack getEmptyAddressBook() {
+    public static ReadOnlyFlexiTrack getEmptyFlexiTrack() {
         return new FlexiTrack();
     }
 
@@ -65,7 +65,7 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
     }
 
     public void resetData(ReadOnlyFlexiTrack newData) {
-        resetData(newData.getPersonList(), newData.getTagList());
+        resetData(newData.getTaskList(), newData.getTagList());
     }
 
 //// task-level operations
@@ -75,7 +75,7 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
      * Also checks the new task's tags and updates {@link #tags} with any new tags found,
      * and updates the Tag objects in the task to point to those in {@link #tags}.
      *
-     * @throws UniqueTaskList.DuplicatePersonException if an equivalent task already exists.
+     * @throws UniqueTaskList.DuplicateTaskException if an equivalent task already exists.
      */
     public void addTask(Task p) throws DuplicateTaskException {
         syncTagsWithMasterList(p);
@@ -105,7 +105,7 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
         task.setTags(new UniqueTagList(commonTagReferences));
     }
 
-    public boolean removePerson(ReadOnlyTask key) throws UniqueTaskList.TaskNotFoundException {
+    public boolean removeTask(ReadOnlyTask key) throws UniqueTaskList.TaskNotFoundException {
         if (task.remove(key)) {
             return true;
         } else {
@@ -128,7 +128,7 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
     }
 
     @Override
-    public List<ReadOnlyTask> getPersonList() {
+    public List<ReadOnlyTask> getTaskList() {
         return Collections.unmodifiableList(task.getInternalList());
     }
 

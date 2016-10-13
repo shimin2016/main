@@ -17,7 +17,7 @@ public interface Model {
     void resetData(ReadOnlyFlexiTrack newData);
 
     /** Returns the FLexiTrack */
-    ReadOnlyFlexiTrack getAddressBook();
+    ReadOnlyFlexiTrack getFlexiTrack();
 
     /** Deletes the given task. */
     void deleteTask(ReadOnlyTask target) throws UniqueTaskList.TaskNotFoundException;
@@ -25,10 +25,10 @@ public interface Model {
     /** Adds the given task */
     void addTask(Task task) throws DuplicateTaskException;
 
-    /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyPerson>} */
+    /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
 
-    /** Updates the filter of the filtered task list to show all persons */
+    /** Updates the filter of the filtered task list to show all tasks */
     void updateFilteredListToShowAll();
 
     /** Updates the filter of the filtered task list to filter by the given keywords*/
@@ -36,6 +36,6 @@ public interface Model {
     
     /** Marks the given task as done 
      * @throws TaskNotFoundException */
-    void markTask(int personToMark);
+    void markTask(int taskToMark);
 
 }

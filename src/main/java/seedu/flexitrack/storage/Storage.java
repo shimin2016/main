@@ -28,12 +28,12 @@ public interface Storage extends FlexiTrackStorage, UserPrefsStorage {
     Optional<ReadOnlyFlexiTrack> readFlexiTrack() throws DataConversionException, IOException;
 
     @Override
-    void saveFlexiTrack(ReadOnlyFlexiTrack addressBook) throws IOException;
+    void saveFlexiTrack(ReadOnlyFlexiTrack flexiTrack) throws IOException;
 
     /**
-     * Saves the current version of the Address Book to the hard disk.
+     * Saves the current version of the FlexiTrack to the hard disk.
      *   Creates the data file if it is missing.
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
-    void handleAddressBookChangedEvent(FlexiTrackChangedEvent abce);
+    void handleFlexiTrackChangedEvent(FlexiTrackChangedEvent abce);
 }

@@ -10,7 +10,7 @@ import seedu.flexitrack.commons.core.EventsCenter;
 import seedu.flexitrack.logic.commands.*;
 import seedu.flexitrack.commons.events.ui.JumpToListRequestEvent;
 import seedu.flexitrack.commons.events.ui.ShowHelpRequestEvent;
-import seedu.flexitrack.commons.events.model.AddressBookChangedEvent;
+import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
 import seedu.flexitrack.model.AddressBook;
 import seedu.flexitrack.model.Model;
 import seedu.flexitrack.model.ModelManager;
@@ -46,7 +46,7 @@ public class LogicManagerTest {
     private int targetedJumpIndex;
 
     @Subscribe
-    private void handleLocalModelChangedEvent(AddressBookChangedEvent abce) {
+    private void handleLocalModelChangedEvent(FlexiTrackChangedEvent abce) {
         latestSavedAddressBook = new AddressBook(abce.data);
     }
 

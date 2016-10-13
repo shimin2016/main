@@ -9,7 +9,7 @@ import seedu.flexitrack.model.task.Task;
 import seedu.flexitrack.model.task.UniqueTaskList;
 import seedu.flexitrack.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.flexitrack.model.task.UniqueTaskList.TaskNotFoundException;
-import seedu.flexitrack.commons.events.model.AddressBookChangedEvent;
+import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
 import seedu.flexitrack.commons.core.ComponentManager;
 
 import java.util.Set;
@@ -62,7 +62,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
-        raise(new AddressBookChangedEvent(addressBook));
+        raise(new FlexiTrackChangedEvent(addressBook));
     }
 
     @Override

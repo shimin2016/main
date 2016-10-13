@@ -3,7 +3,7 @@ package seedu.flexitrack.storage;
 import com.google.common.eventbus.Subscribe;
 import seedu.flexitrack.commons.core.ComponentManager;
 import seedu.flexitrack.commons.core.LogsCenter;
-import seedu.flexitrack.commons.events.model.AddressBookChangedEvent;
+import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
 import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
 import seedu.flexitrack.commons.exceptions.DataConversionException;
 import seedu.flexitrack.model.ReadOnlyAddressBook;
@@ -79,7 +79,7 @@ public class StorageManager extends ComponentManager implements Storage {
 
     @Override
     @Subscribe
-    public void handleAddressBookChangedEvent(AddressBookChangedEvent event) {
+    public void handleAddressBookChangedEvent(FlexiTrackChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
         try {
             saveAddressBook(event.data);

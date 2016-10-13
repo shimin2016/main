@@ -16,11 +16,11 @@ import java.util.logging.Logger;
 public class HelpWindow extends UiPart {
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
-    private static final String ICON = "/images/help_icon.png";
+    private static final String ICON = "/images/task_tracker.png";
     private static final String FXML = "HelpWindow.fxml";
     private static final String TITLE = "Help";
     private static final String USERGUIDE_URL =
-            "https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md";
+            "https://github.com/CS2103AUG2016-F09-C3/main/blob/master/docs/UserGuide.md";
 
     private AnchorPane mainPane;
 

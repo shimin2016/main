@@ -100,4 +100,8 @@ public class Task implements ReadOnlyTask {
         return getAsText();
     }
 
+    public void markAsDone() {
+        this.name.setName("(DONE) " +this.name); 
+    }
+
 }

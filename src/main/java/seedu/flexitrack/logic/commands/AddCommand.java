@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Adds a person to the address book.
+ * Adds a task to the FlexiTrack.
  */
 public class AddCommand extends Command {
 
@@ -25,7 +25,7 @@ public class AddCommand extends Command {
             + " CS tutorial by/ 15102016";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This task already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the FlexiTrack";
 
     private final Task toAdd;
 
@@ -56,7 +56,7 @@ public class AddCommand extends Command {
             model.addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicateTaskException e) {
-            return new CommandResult(MESSAGE_DUPLICATE_PERSON);
+            return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }
 
     }

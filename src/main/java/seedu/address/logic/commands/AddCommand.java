@@ -1,10 +1,10 @@
 package seedu.address.logic.commands;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.*;
-import seedu.address.model.person.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.task.*;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 import java.util.HashSet;
 import java.util.Set;

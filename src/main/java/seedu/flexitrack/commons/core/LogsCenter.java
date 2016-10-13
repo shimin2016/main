@@ -1,6 +1,6 @@
-package seedu.address.commons.core;
+package seedu.flexitrack.commons.core;
 
-import seedu.address.commons.events.BaseEvent;
+import seedu.flexitrack.commons.events.BaseEvent;
 
 import java.io.IOException;
 import java.util.logging.*;

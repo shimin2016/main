@@ -1,6 +1,6 @@
-package seedu.address.commons.core;
+package seedu.flexitrack.commons.core;
 
-import seedu.address.commons.events.BaseEvent;
+import seedu.flexitrack.commons.events.BaseEvent;
 
 /**
  * Base class for *Manager classes

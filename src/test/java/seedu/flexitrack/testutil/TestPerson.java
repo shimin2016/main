@@ -1,11 +1,11 @@
-package seedu.address.testutil;
+package seedu.flexitrack.testutil;
 
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.*;
+import seedu.flexitrack.model.tag.UniqueTagList;
+import seedu.flexitrack.model.task.*;
 
 import java.util.Objects;
 
-import seedu.address.commons.util.CollectionUtil;
+import seedu.flexitrack.commons.util.CollectionUtil;
 
 /**
  * A mutable person object. For testing only.

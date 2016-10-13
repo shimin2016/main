@@ -1,6 +1,6 @@
-package seedu.address.model;
+package seedu.flexitrack.model;
 
-import seedu.address.commons.core.GuiSettings;
+import seedu.flexitrack.commons.core.GuiSettings;
 
 import java.util.Objects;
 

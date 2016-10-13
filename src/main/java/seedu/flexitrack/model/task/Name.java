@@ -1,6 +1,6 @@
-package seedu.address.model.task;
+package seedu.flexitrack.model.task;
 
-import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
 
 /**
  * Represents a Person's name in the address book.

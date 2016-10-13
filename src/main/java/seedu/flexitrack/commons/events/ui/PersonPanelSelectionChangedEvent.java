@@ -1,7 +1,7 @@
-package seedu.address.commons.events.ui;
+package seedu.flexitrack.commons.events.ui;
 
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.task.ReadOnlyTask;
+import seedu.flexitrack.commons.events.BaseEvent;
+import seedu.flexitrack.model.task.ReadOnlyTask;
 
 /**
  * Represents a selection change in the Person List Panel

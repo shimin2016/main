@@ -1,7 +1,7 @@
-package seedu.address.logic.commands;
+package seedu.flexitrack.logic.commands;
 
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.flexitrack.commons.core.EventsCenter;
+import seedu.flexitrack.commons.events.ui.ExitAppRequestEvent;
 
 /**
  * Terminates the program.

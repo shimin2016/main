@@ -1,13 +1,13 @@
-package seedu.address;
+package seedu.flexitrack;
 
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import seedu.address.commons.core.Config;
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.UserPrefs;
-import seedu.address.storage.XmlSerializableAddressBook;
-import seedu.address.testutil.TestUtil;
+import seedu.flexitrack.commons.core.Config;
+import seedu.flexitrack.commons.core.GuiSettings;
+import seedu.flexitrack.model.ReadOnlyAddressBook;
+import seedu.flexitrack.model.UserPrefs;
+import seedu.flexitrack.storage.XmlSerializableAddressBook;
+import seedu.flexitrack.testutil.TestUtil;
 
 import java.util.function.Supplier;
 

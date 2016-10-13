@@ -1,10 +1,10 @@
-package seedu.address.ui;
+package seedu.flexitrack.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import seedu.address.model.task.ReadOnlyTask;
+import seedu.flexitrack.model.task.ReadOnlyTask;
 
 public class PersonCard extends UiPart{
 

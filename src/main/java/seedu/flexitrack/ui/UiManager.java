@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.flexitrack.ui;
 
 import com.google.common.eventbus.Subscribe;
 import javafx.application.Platform;
@@ -6,17 +6,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import seedu.address.MainApp;
-import seedu.address.commons.core.ComponentManager;
-import seedu.address.commons.core.Config;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.storage.DataSavingExceptionEvent;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
-import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.commons.events.ui.ShowHelpRequestEvent;
-import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.Logic;
-import seedu.address.model.UserPrefs;
+import seedu.flexitrack.MainApp;
+import seedu.flexitrack.commons.core.ComponentManager;
+import seedu.flexitrack.commons.core.Config;
+import seedu.flexitrack.commons.core.LogsCenter;
+import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
+import seedu.flexitrack.commons.events.ui.JumpToListRequestEvent;
+import seedu.flexitrack.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.flexitrack.commons.events.ui.ShowHelpRequestEvent;
+import seedu.flexitrack.commons.util.StringUtil;
+import seedu.flexitrack.logic.Logic;
+import seedu.flexitrack.model.UserPrefs;
 
 import java.util.logging.Logger;
 

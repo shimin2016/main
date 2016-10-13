@@ -1,7 +1,7 @@
-package seedu.address.commons.events.ui;
+package seedu.flexitrack.commons.events.ui;
 
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.logic.commands.Command;
+import seedu.flexitrack.commons.events.BaseEvent;
+import seedu.flexitrack.logic.commands.Command;
 
 /**
  * Indicates an attempt to execute an incorrect command

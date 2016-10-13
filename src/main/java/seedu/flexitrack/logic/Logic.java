@@ -1,8 +1,8 @@
-package seedu.address.logic;
+package seedu.flexitrack.logic;
 
 import javafx.collections.ObservableList;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.model.task.ReadOnlyTask;
+import seedu.flexitrack.logic.commands.CommandResult;
+import seedu.flexitrack.model.task.ReadOnlyTask;
 
 /**
  * API of the Logic component

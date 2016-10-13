@@ -1,13 +1,13 @@
-package seedu.address.storage;
+package seedu.flexitrack.storage;
 
-import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.flexitrack.commons.exceptions.DataConversionException;
+import seedu.flexitrack.model.ReadOnlyAddressBook;
 
 import java.io.IOException;
 import java.util.Optional;
 
 /**
- * Represents a storage for {@link seedu.address.model.AddressBook}.
+ * Represents a storage for {@link seedu.flexitrack.model.AddressBook}.
  */
 public interface AddressBookStorage {
 

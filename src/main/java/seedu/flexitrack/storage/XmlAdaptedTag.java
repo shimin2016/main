@@ -1,8 +1,8 @@
-package seedu.address.storage;
+package seedu.flexitrack.storage;
 
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.tag.Tag;
+import seedu.flexitrack.commons.util.CollectionUtil;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
+import seedu.flexitrack.model.tag.Tag;
 
 import javax.xml.bind.annotation.XmlValue;
 

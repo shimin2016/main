@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.flexitrack.logic.commands;
 
 
 /**

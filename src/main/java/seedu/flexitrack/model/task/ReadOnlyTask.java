@@ -1,6 +1,6 @@
-package seedu.address.model.task;
+package seedu.flexitrack.model.task;
 
-import seedu.address.model.tag.UniqueTagList;
+import seedu.flexitrack.model.tag.UniqueTagList;
 
 /**
  * A read-only immutable interface for a Person in the addressbook.

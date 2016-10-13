@@ -1,6 +1,6 @@
-package seedu.address.logic.commands;
+package seedu.flexitrack.logic.commands;
 
-import seedu.address.model.AddressBook;
+import seedu.flexitrack.model.AddressBook;
 
 /**
  * Clears the address book.

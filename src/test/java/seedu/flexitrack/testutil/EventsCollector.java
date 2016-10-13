@@ -1,8 +1,8 @@
-package seedu.address.testutil;
+package seedu.flexitrack.testutil;
 
 import com.google.common.eventbus.Subscribe;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.BaseEvent;
+import seedu.flexitrack.commons.core.EventsCenter;
+import seedu.flexitrack.commons.events.BaseEvent;
 
 import java.util.ArrayList;
 import java.util.List;

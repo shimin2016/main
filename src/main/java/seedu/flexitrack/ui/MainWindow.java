@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.flexitrack.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,12 +8,12 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import seedu.address.commons.core.Config;
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.commons.events.ui.ExitAppRequestEvent;
-import seedu.address.logic.Logic;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.task.ReadOnlyTask;
+import seedu.flexitrack.commons.core.Config;
+import seedu.flexitrack.commons.core.GuiSettings;
+import seedu.flexitrack.commons.events.ui.ExitAppRequestEvent;
+import seedu.flexitrack.logic.Logic;
+import seedu.flexitrack.model.UserPrefs;
+import seedu.flexitrack.model.task.ReadOnlyTask;
 
 /**
  * The Main Window. Provides the basic application layout containing

@@ -1,7 +1,7 @@
-package seedu.address.commons.events.model;
+package seedu.flexitrack.commons.events.model;
 
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.flexitrack.commons.events.BaseEvent;
+import seedu.flexitrack.model.ReadOnlyAddressBook;
 
 /** Indicates the AddressBook in the model has changed*/
 public class AddressBookChangedEvent extends BaseEvent {

@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.flexitrack.testutil;
 
 import com.google.common.io.Files;
 import guitests.guihandles.PersonCardHandle;
@@ -12,15 +12,15 @@ import javafx.scene.input.KeyCombination;
 import junit.framework.AssertionFailedError;
 import org.loadui.testfx.GuiTest;
 import org.testfx.api.FxToolkit;
-import seedu.address.TestApp;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.FileUtil;
-import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.AddressBook;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.*;
-import seedu.address.storage.XmlSerializableAddressBook;
+import seedu.flexitrack.TestApp;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
+import seedu.flexitrack.commons.util.FileUtil;
+import seedu.flexitrack.commons.util.XmlUtil;
+import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.tag.Tag;
+import seedu.flexitrack.model.tag.UniqueTagList;
+import seedu.flexitrack.model.task.*;
+import seedu.flexitrack.storage.XmlSerializableAddressBook;
 
 import java.io.File;
 import java.io.IOException;

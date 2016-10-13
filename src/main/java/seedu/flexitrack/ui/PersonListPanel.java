@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.flexitrack.ui;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -10,9 +10,9 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.commons.core.LogsCenter;
+import seedu.flexitrack.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.commons.core.LogsCenter;
 
 import java.util.logging.Logger;
 

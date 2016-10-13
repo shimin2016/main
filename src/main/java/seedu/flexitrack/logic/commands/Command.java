@@ -1,9 +1,9 @@
-package seedu.address.logic.commands;
+package seedu.flexitrack.logic.commands;
 
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.events.ui.IncorrectCommandAttemptedEvent;
-import seedu.address.model.Model;
+import seedu.flexitrack.commons.core.EventsCenter;
+import seedu.flexitrack.commons.core.Messages;
+import seedu.flexitrack.commons.events.ui.IncorrectCommandAttemptedEvent;
+import seedu.flexitrack.model.Model;
 
 /**
  * Represents a command with hidden internal logic and the ability to be executed.

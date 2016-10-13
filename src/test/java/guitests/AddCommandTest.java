@@ -2,10 +2,10 @@ package guitests;
 
 import guitests.guihandles.PersonCardHandle;
 import org.junit.Test;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.commons.core.Messages;
-import seedu.address.testutil.TestPerson;
-import seedu.address.testutil.TestUtil;
+import seedu.flexitrack.logic.commands.AddCommand;
+import seedu.flexitrack.commons.core.Messages;
+import seedu.flexitrack.testutil.TestPerson;
+import seedu.flexitrack.testutil.TestUtil;
 
 import static org.junit.Assert.assertTrue;
 

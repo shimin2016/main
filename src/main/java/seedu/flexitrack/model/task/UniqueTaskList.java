@@ -1,9 +1,9 @@
-package seedu.address.model.task;
+package seedu.flexitrack.model.task;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.commons.exceptions.DuplicateDataException;
+import seedu.flexitrack.commons.util.CollectionUtil;
+import seedu.flexitrack.commons.exceptions.DuplicateDataException;
 
 import java.util.*;
 

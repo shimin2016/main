@@ -1,12 +1,12 @@
-package seedu.address.commons.util;
+package seedu.flexitrack.commons.util;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import seedu.address.model.AddressBook;
-import seedu.address.storage.XmlSerializableAddressBook;
-import seedu.address.testutil.AddressBookBuilder;
-import seedu.address.testutil.TestUtil;
+import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.storage.XmlSerializableAddressBook;
+import seedu.flexitrack.testutil.AddressBookBuilder;
+import seedu.flexitrack.testutil.TestUtil;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;

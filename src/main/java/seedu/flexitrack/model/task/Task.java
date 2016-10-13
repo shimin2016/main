@@ -1,7 +1,7 @@
-package seedu.address.model.task;
+package seedu.flexitrack.model.task;
 
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.flexitrack.commons.util.CollectionUtil;
+import seedu.flexitrack.model.tag.UniqueTagList;
 
 import java.util.Objects;
 

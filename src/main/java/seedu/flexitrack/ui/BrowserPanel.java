@@ -1,12 +1,12 @@
-package seedu.address.ui;
+package seedu.flexitrack.ui;
 
 import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
-import seedu.address.commons.util.FxViewUtil;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.commons.core.LogsCenter;
+import seedu.flexitrack.commons.util.FxViewUtil;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.commons.core.LogsCenter;
 
 import java.util.logging.Logger;
 

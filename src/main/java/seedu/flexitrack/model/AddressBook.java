@@ -1,12 +1,12 @@
-package seedu.address.model;
+package seedu.flexitrack.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.UniqueTaskList;
-import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.flexitrack.model.tag.Tag;
+import seedu.flexitrack.model.tag.UniqueTagList;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.model.task.Task;
+import seedu.flexitrack.model.task.UniqueTaskList;
+import seedu.flexitrack.model.task.UniqueTaskList.DuplicateTaskException;
 
 import java.util.*;
 import java.util.stream.Collectors;

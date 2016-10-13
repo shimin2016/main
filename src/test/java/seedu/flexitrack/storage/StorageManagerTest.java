@@ -1,17 +1,17 @@
-package seedu.address.storage;
+package seedu.flexitrack.storage;
 
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import seedu.address.commons.events.model.AddressBookChangedEvent;
-import seedu.address.commons.events.storage.DataSavingExceptionEvent;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.UserPrefs;
-import seedu.address.testutil.TypicalTestPersons;
-import seedu.address.testutil.EventsCollector;
+import seedu.flexitrack.commons.events.model.AddressBookChangedEvent;
+import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
+import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.ReadOnlyAddressBook;
+import seedu.flexitrack.model.UserPrefs;
+import seedu.flexitrack.testutil.TypicalTestPersons;
+import seedu.flexitrack.testutil.EventsCollector;
 
 import java.io.IOException;
 

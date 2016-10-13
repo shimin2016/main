@@ -1,9 +1,9 @@
-package seedu.address.logic.commands;
+package seedu.flexitrack.logic.commands;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
+import seedu.flexitrack.commons.core.Messages;
+import seedu.flexitrack.commons.core.UnmodifiableObservableList;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Deletes a person identified using it's last displayed index from the address book.

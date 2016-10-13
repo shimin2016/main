@@ -8,12 +8,12 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.testfx.api.FxToolkit;
-import seedu.address.TestApp;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.model.AddressBook;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.testutil.TestUtil;
-import seedu.address.testutil.TypicalTestPersons;
+import seedu.flexitrack.TestApp;
+import seedu.flexitrack.commons.core.EventsCenter;
+import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.testutil.TestUtil;
+import seedu.flexitrack.testutil.TypicalTestPersons;
 
 import java.util.concurrent.TimeoutException;
 

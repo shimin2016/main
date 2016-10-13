@@ -1,10 +1,10 @@
-package seedu.address.model;
+package seedu.flexitrack.model;
 
 
-import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.UniqueTaskList;
+import seedu.flexitrack.model.tag.Tag;
+import seedu.flexitrack.model.tag.UniqueTagList;
+import seedu.flexitrack.model.task.ReadOnlyTask;
+import seedu.flexitrack.model.task.UniqueTaskList;
 
 import java.util.List;
 

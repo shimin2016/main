@@ -16,7 +16,7 @@ import seedu.flexitrack.TestApp;
 import seedu.flexitrack.commons.exceptions.IllegalValueException;
 import seedu.flexitrack.commons.util.FileUtil;
 import seedu.flexitrack.commons.util.XmlUtil;
-import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.FlexiTrack;
 import seedu.flexitrack.model.tag.Tag;
 import seedu.flexitrack.model.tag.UniqueTagList;
 import seedu.flexitrack.model.task.*;
@@ -134,8 +134,8 @@ public class TestUtil {
         createDataFileWithSampleData(TestApp.SAVE_LOCATION_FOR_TESTING);
     }
 
-    public static AddressBook generateEmptyAddressBook() {
-        return new AddressBook(new UniqueTaskList(), new UniqueTagList());
+    public static FlexiTrack generateEmptyAddressBook() {
+        return new FlexiTrack(new UniqueTaskList(), new UniqueTagList());
     }
 
     public static XmlSerializableAddressBook generateSampleStorageAddressBook() {

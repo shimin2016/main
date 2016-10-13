@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Wraps all data at the task-tracker level
  * Duplicates are not allowed (by .equals comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class FlexiTrack implements ReadOnlyFlexiTrack {
 
     private final UniqueTaskList task;
     private final UniqueTagList tags;
@@ -25,24 +25,24 @@ public class AddressBook implements ReadOnlyAddressBook {
         tags = new UniqueTagList();
     }
 
-    public AddressBook() {}
+    public FlexiTrack() {}
 
     /**
      * Persons and Tags are copied into this taskstracker
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public FlexiTrack(ReadOnlyFlexiTrack toBeCopied) {
         this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
     }
 
     /**
      * Persons and Tags are copied into this taskstracker
      */
-    public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
+    public FlexiTrack(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
 
-    public static ReadOnlyAddressBook getEmptyAddressBook() {
-        return new AddressBook();
+    public static ReadOnlyFlexiTrack getEmptyAddressBook() {
+        return new FlexiTrack();
     }
 
 //// list overwrite operations
@@ -64,7 +64,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setTags(newTags);
     }
 
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyFlexiTrack newData) {
         resetData(newData.getPersonList(), newData.getTagList());
     }
 
@@ -151,9 +151,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && this.task.equals(((AddressBook) other).task)
-                && this.tags.equals(((AddressBook) other).tags));
+                || (other instanceof FlexiTrack // instanceof handles nulls
+                && this.task.equals(((FlexiTrack) other).task)
+                && this.tags.equals(((FlexiTrack) other).tags));
     }
 
     @Override

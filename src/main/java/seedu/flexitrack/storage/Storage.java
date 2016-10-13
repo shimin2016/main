@@ -3,7 +3,7 @@ package seedu.flexitrack.storage;
 import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
 import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
 import seedu.flexitrack.commons.exceptions.DataConversionException;
-import seedu.flexitrack.model.ReadOnlyAddressBook;
+import seedu.flexitrack.model.ReadOnlyFlexiTrack;
 import seedu.flexitrack.model.UserPrefs;
 
 import java.io.FileNotFoundException;
@@ -25,10 +25,10 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage {
     String getAddressBookFilePath();
 
     @Override
-    Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyFlexiTrack> readAddressBook() throws DataConversionException, IOException;
 
     @Override
-    void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
+    void saveAddressBook(ReadOnlyFlexiTrack addressBook) throws IOException;
 
     /**
      * Saves the current version of the Address Book to the hard disk.

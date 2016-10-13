@@ -14,10 +14,10 @@ import java.util.Set;
  */
 public interface Model {
     /** Clears existing backing model and replaces with the provided new data. */
-    void resetData(ReadOnlyAddressBook newData);
+    void resetData(ReadOnlyFlexiTrack newData);
 
     /** Returns the FLexiTrack */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyFlexiTrack getAddressBook();
 
     /** Deletes the given task. */
     void deleteTask(ReadOnlyTask target) throws UniqueTaskList.TaskNotFoundException;

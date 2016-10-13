@@ -4,7 +4,7 @@ import seedu.flexitrack.commons.exceptions.IllegalValueException;
 import seedu.flexitrack.model.tag.Tag;
 import seedu.flexitrack.model.task.Task;
 import seedu.flexitrack.model.task.UniqueTaskList;
-import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.FlexiTrack;
 
 /**
  * A utility class to help with building Addressbook objects.
@@ -13,9 +13,9 @@ import seedu.flexitrack.model.AddressBook;
  */
 public class AddressBookBuilder {
 
-    private AddressBook addressBook;
+    private FlexiTrack addressBook;
 
-    public AddressBookBuilder(AddressBook addressBook){
+    public AddressBookBuilder(FlexiTrack addressBook){
         this.addressBook = addressBook;
     }
 
@@ -29,7 +29,7 @@ public class AddressBookBuilder {
         return this;
     }
 
-    public AddressBook build(){
+    public FlexiTrack build(){
         return addressBook;
     }
 }

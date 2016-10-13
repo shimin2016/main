@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
 import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
-import seedu.flexitrack.model.AddressBook;
-import seedu.flexitrack.model.ReadOnlyAddressBook;
+import seedu.flexitrack.model.FlexiTrack;
+import seedu.flexitrack.model.ReadOnlyFlexiTrack;
 import seedu.flexitrack.model.UserPrefs;
 import seedu.flexitrack.testutil.TypicalTestPersons;
 import seedu.flexitrack.testutil.EventsCollector;
@@ -55,10 +55,10 @@ public class StorageManagerTest {
 
     @Test
     public void addressBookReadSave() throws Exception {
-        AddressBook original = new TypicalTestPersons().getTypicalAddressBook();
+        FlexiTrack original = new TypicalTestPersons().getTypicalAddressBook();
         storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        ReadOnlyFlexiTrack retrieved = storageManager.readAddressBook().get();
+        assertEquals(original, new FlexiTrack(retrieved));
         //More extensive testing of AddressBook saving/reading is done in XmlAddressBookStorageTest
     }
 
@@ -72,7 +72,7 @@ public class StorageManagerTest {
         //Create a StorageManager while injecting a stub that throws an exception when the save method is called
         Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub("dummy"), new JsonUserPrefsStorage("dummy"));
         EventsCollector eventCollector = new EventsCollector();
-        storage.handleAddressBookChangedEvent(new FlexiTrackChangedEvent(new AddressBook()));
+        storage.handleAddressBookChangedEvent(new FlexiTrackChangedEvent(new FlexiTrack()));
         assertTrue(eventCollector.get(0) instanceof DataSavingExceptionEvent);
     }
 
@@ -87,7 +87,7 @@ public class StorageManagerTest {
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) throws IOException {
+        public void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
             throw new IOException("dummy exception");
         }
     }

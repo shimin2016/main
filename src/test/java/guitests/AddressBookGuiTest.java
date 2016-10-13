@@ -10,7 +10,7 @@ import org.junit.rules.TestName;
 import org.testfx.api.FxToolkit;
 import seedu.flexitrack.TestApp;
 import seedu.flexitrack.commons.core.EventsCenter;
-import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.FlexiTrack;
 import seedu.flexitrack.model.task.ReadOnlyTask;
 import seedu.flexitrack.testutil.TestUtil;
 import seedu.flexitrack.testutil.TypicalTestPersons;
@@ -75,8 +75,8 @@ public abstract class AddressBookGuiTest {
      * Override this in child classes to set the initial local data.
      * Return null to use the data in the file specified in {@link #getDataFileLocation()}
      */
-    protected AddressBook getInitialData() {
-        AddressBook ab = TestUtil.generateEmptyAddressBook();
+    protected FlexiTrack getInitialData() {
+        FlexiTrack ab = TestUtil.generateEmptyAddressBook();
         TypicalTestPersons.loadAddressBookWithSampleData(ab);
         return ab;
     }

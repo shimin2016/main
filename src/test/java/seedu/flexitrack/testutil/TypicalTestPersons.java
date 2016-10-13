@@ -1,7 +1,7 @@
 package seedu.flexitrack.testutil;
 
 import seedu.flexitrack.commons.exceptions.IllegalValueException;
-import seedu.flexitrack.model.AddressBook;
+import seedu.flexitrack.model.FlexiTrack;
 import seedu.flexitrack.model.task.*;
 
 /**
@@ -34,7 +34,7 @@ public class TypicalTestPersons {
         }
     }
 
-    public static void loadAddressBookWithSampleData(AddressBook ab) {
+    public static void loadAddressBookWithSampleData(FlexiTrack ab) {
 
         try {
             ab.addTask(new Task(alice));
@@ -53,8 +53,8 @@ public class TypicalTestPersons {
         return new TestPerson[]{alice, benson, carl, daniel, elle, fiona, george};
     }
 
-    public AddressBook getTypicalAddressBook(){
-        AddressBook ab = new AddressBook();
+    public FlexiTrack getTypicalAddressBook(){
+        FlexiTrack ab = new FlexiTrack();
         loadAddressBookWithSampleData(ab);
         return ab;
     }

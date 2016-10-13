@@ -1,14 +1,14 @@
 package seedu.flexitrack.commons.events.model;
 
 import seedu.flexitrack.commons.events.BaseEvent;
-import seedu.flexitrack.model.ReadOnlyAddressBook;
+import seedu.flexitrack.model.ReadOnlyFlexiTrack;
 
 /** Indicates the AddressBook in the model has changed*/
 public class FlexiTrackChangedEvent extends BaseEvent {
 
-    public final ReadOnlyAddressBook data;
+    public final ReadOnlyFlexiTrack data;
 
-    public FlexiTrackChangedEvent(ReadOnlyAddressBook data){
+    public FlexiTrackChangedEvent(ReadOnlyFlexiTrack data){
         this.data = data;
     }
 

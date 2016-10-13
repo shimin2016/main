@@ -56,15 +56,15 @@ public class StorageManagerTest {
     @Test
     public void addressBookReadSave() throws Exception {
         FlexiTrack original = new TypicalTestPersons().getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyFlexiTrack retrieved = storageManager.readAddressBook().get();
+        storageManager.saveFlexiTrack(original);
+        ReadOnlyFlexiTrack retrieved = storageManager.readFlexiTrack().get();
         assertEquals(original, new FlexiTrack(retrieved));
         //More extensive testing of AddressBook saving/reading is done in XmlAddressBookStorageTest
     }
 
     @Test
     public void getAddressBookFilePath(){
-        assertNotNull(storageManager.getAddressBookFilePath());
+        assertNotNull(storageManager.getFlexiTrackFilePath());
     }
 
     @Test
@@ -80,14 +80,14 @@ public class StorageManagerTest {
     /**
      * A Stub class to throw an exception when the save method is called
      */
-    class XmlAddressBookStorageExceptionThrowingStub extends XmlAddressBookStorage{
+    class XmlAddressBookStorageExceptionThrowingStub extends XmlFlexiTrackStorage{
 
         public XmlAddressBookStorageExceptionThrowingStub(String filePath) {
             super(filePath);
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
+        public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
             throw new IOException("dummy exception");
         }
     }

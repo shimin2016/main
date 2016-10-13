@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, UserPrefsStorage {
+public interface Storage extends FlexiTrackStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -22,13 +22,13 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage {
     void saveUserPrefs(UserPrefs userPrefs) throws IOException;
 
     @Override
-    String getAddressBookFilePath();
+    String getFlexiTrackFilePath();
 
     @Override
-    Optional<ReadOnlyFlexiTrack> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyFlexiTrack> readFlexiTrack() throws DataConversionException, IOException;
 
     @Override
-    void saveAddressBook(ReadOnlyFlexiTrack addressBook) throws IOException;
+    void saveFlexiTrack(ReadOnlyFlexiTrack addressBook) throws IOException;
 
     /**
      * Saves the current version of the Address Book to the hard disk.

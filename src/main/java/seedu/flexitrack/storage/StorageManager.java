@@ -20,18 +20,18 @@ import java.util.logging.Logger;
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
+    private FlexiTrackStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(FlexiTrackStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
     public StorageManager(String addressBookFilePath, String userPrefsFilePath) {
-        this(new XmlAddressBookStorage(addressBookFilePath), new JsonUserPrefsStorage(userPrefsFilePath));
+        this(new XmlFlexiTrackStorage(addressBookFilePath), new JsonUserPrefsStorage(userPrefsFilePath));
     }
 
     // ================ UserPrefs methods ==============================
@@ -50,30 +50,30 @@ public class StorageManager extends ComponentManager implements Storage {
     // ================ AddressBook methods ==============================
 
     @Override
-    public String getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public String getFlexiTrackFilePath() {
+        return addressBookStorage.getFlexiTrackFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyFlexiTrack> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyFlexiTrack> readFlexiTrack() throws DataConversionException, IOException {
+        return readFlexiTrack(addressBookStorage.getFlexiTrackFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyFlexiTrack> readAddressBook(String filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyFlexiTrack> readFlexiTrack(String filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return addressBookStorage.readFlexiTrack(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyFlexiTrack addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook) throws IOException {
+        saveFlexiTrack(addressBook, addressBookStorage.getFlexiTrackFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
+    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        addressBookStorage.saveFlexiTrack(addressBook, filePath);
     }
 
 
@@ -82,7 +82,7 @@ public class StorageManager extends ComponentManager implements Storage {
     public void handleAddressBookChangedEvent(FlexiTrackChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
         try {
-            saveAddressBook(event.data);
+            saveFlexiTrack(event.data);
         } catch (IOException e) {
             raise(new DataSavingExceptionEvent(e));
         }

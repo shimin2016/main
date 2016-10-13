@@ -33,7 +33,7 @@ public class XmlAddressBookStorageTest {
     }
 
     private java.util.Optional<ReadOnlyFlexiTrack> readAddressBook(String filePath) throws Exception {
-        return new XmlAddressBookStorage(filePath).readAddressBook(addToTestDataPathIfNotNull(filePath));
+        return new XmlFlexiTrackStorage(filePath).readFlexiTrack(addToTestDataPathIfNotNull(filePath));
     }
 
     private String addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -63,24 +63,24 @@ public class XmlAddressBookStorageTest {
         String filePath = testFolder.getRoot().getPath() + "TempAddressBook.xml";
         TypicalTestPersons td = new TypicalTestPersons();
         FlexiTrack original = td.getTypicalAddressBook();
-        XmlAddressBookStorage xmlAddressBookStorage = new XmlAddressBookStorage(filePath);
+        XmlFlexiTrackStorage xmlAddressBookStorage = new XmlFlexiTrackStorage(filePath);
 
         //Save in new file and read back
-        xmlAddressBookStorage.saveAddressBook(original, filePath);
-        ReadOnlyFlexiTrack readBack = xmlAddressBookStorage.readAddressBook(filePath).get();
+        xmlAddressBookStorage.saveFlexiTrack(original, filePath);
+        ReadOnlyFlexiTrack readBack = xmlAddressBookStorage.readFlexiTrack(filePath).get();
         assertEquals(original, new FlexiTrack(readBack));
 
         //Modify data, overwrite exiting file, and read back
         original.addTask(new Task(TypicalTestPersons.hoon));
         original.removeTask(new Task(TypicalTestPersons.alice));
-        xmlAddressBookStorage.saveAddressBook(original, filePath);
-        readBack = xmlAddressBookStorage.readAddressBook(filePath).get();
+        xmlAddressBookStorage.saveFlexiTrack(original, filePath);
+        readBack = xmlAddressBookStorage.readFlexiTrack(filePath).get();
         assertEquals(original, new FlexiTrack(readBack));
 
         //Save and read without specifying file path
         original.addTask(new Task(TypicalTestPersons.ida));
-        xmlAddressBookStorage.saveAddressBook(original); //file path not specified
-        readBack = xmlAddressBookStorage.readAddressBook().get(); //file path not specified
+        xmlAddressBookStorage.saveFlexiTrack(original); //file path not specified
+        readBack = xmlAddressBookStorage.readFlexiTrack().get(); //file path not specified
         assertEquals(original, new FlexiTrack(readBack));
 
     }
@@ -92,7 +92,7 @@ public class XmlAddressBookStorageTest {
     }
 
     private void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
-        new XmlAddressBookStorage(filePath).saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
+        new XmlFlexiTrackStorage(filePath).saveFlexiTrack(addressBook, addToTestDataPathIfNotNull(filePath));
     }
 
     @Test

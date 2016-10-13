@@ -9,36 +9,36 @@ import java.util.Optional;
 /**
  * Represents a storage for {@link seedu.flexitrack.model.FlexiTrack}.
  */
-public interface AddressBookStorage {
+public interface FlexiTrackStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    String getAddressBookFilePath();
+    String getFlexiTrackFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyFlexiTrack}.
+     * Returns FlexiTrack data as a {@link ReadOnlyFlexiTrack}.
      *   Returns {@code Optional.empty()} if storage file is not found.
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyFlexiTrack> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyFlexiTrack> readFlexiTrack() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getFlexiTrackFilePath()
      */
-    Optional<ReadOnlyFlexiTrack> readAddressBook(String filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyFlexiTrack> readFlexiTrack(String filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyFlexiTrack} to the storage.
-     * @param addressBook cannot be null.
+     * @param FlexiTrack cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyFlexiTrack addressBook) throws IOException;
+    void saveFlexiTrack(ReadOnlyFlexiTrack flexiTrack) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyFlexiTrack)
+     * @see #saveFlexiTrack(ReadOnlyFlexiTrack)
      */
-    void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException;
+    void saveFlexiTrack(ReadOnlyFlexiTrack flexiTrack, String filePath) throws IOException;
 
 }

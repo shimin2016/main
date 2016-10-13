@@ -14,26 +14,26 @@ import java.util.logging.Logger;
 /**
  * A class to access AddressBook data stored as an xml file on the hard disk.
  */
-public class XmlAddressBookStorage implements AddressBookStorage {
+public class XmlFlexiTrackStorage implements FlexiTrackStorage {
 
-    private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(XmlFlexiTrackStorage.class);
 
     private String filePath;
 
-    public XmlAddressBookStorage(String filePath){
+    public XmlFlexiTrackStorage(String filePath){
         this.filePath = filePath;
     }
 
-    public String getAddressBookFilePath(){
+    public String getFlexiTrackFilePath(){
         return filePath;
     }
 
     /**
-     * Similar to {@link #readAddressBook()}
+     * Similar to {@link #readFlexiTrack()}
      * @param filePath location of the data. Cannot be null
      * @throws DataConversionException if the file is not in the correct format.
      */
-    public Optional<ReadOnlyFlexiTrack> readAddressBook(String filePath) throws DataConversionException, FileNotFoundException {
+    public Optional<ReadOnlyFlexiTrack> readFlexiTrack(String filePath) throws DataConversionException, FileNotFoundException {
         assert filePath != null;
 
         File addressBookFile = new File(filePath);
@@ -49,10 +49,10 @@ public class XmlAddressBookStorage implements AddressBookStorage {
     }
 
     /**
-     * Similar to {@link #saveAddressBook(ReadOnlyFlexiTrack)}
+     * Similar to {@link #saveFlexiTrack(ReadOnlyFlexiTrack)}
      * @param filePath location of the data. Cannot be null
      */
-    public void saveAddressBook(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
+    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
         assert addressBook != null;
         assert filePath != null;
 
@@ -62,12 +62,12 @@ public class XmlAddressBookStorage implements AddressBookStorage {
     }
 
     @Override
-    public Optional<ReadOnlyFlexiTrack> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(filePath);
+    public Optional<ReadOnlyFlexiTrack> readFlexiTrack() throws DataConversionException, IOException {
+        return readFlexiTrack(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyFlexiTrack addressBook) throws IOException {
-        saveAddressBook(addressBook, filePath);
+    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook) throws IOException {
+        saveFlexiTrack(addressBook, filePath);
     }
 }

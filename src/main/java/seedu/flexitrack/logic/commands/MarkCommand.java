@@ -8,7 +8,7 @@ import seedu.flexitrack.model.task.UniqueTaskList.TaskNotFoundException;
 import seedu.flexitrack.commons.core.UnmodifiableObservableList;
 
 /**
- * Selects a person identified using it's last displayed index from the address book.
+ * Selects a task identified using it's last displayed index from the FlexiTrack.
  */
 public class MarkCommand extends Command {
 
@@ -21,7 +21,7 @@ public class MarkCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_MARK_PERSON_SUCCESS = "Marked Task: %1$s";
+    public static final String MESSAGE_MARK_TASK_SUCCESS = "Marked Task: %1$s";
 
     public MarkCommand(int targetIndex) {
         this.targetIndex = targetIndex;
@@ -39,7 +39,7 @@ public class MarkCommand extends Command {
         
         model.markTask(targetIndex - 1);
                 
-        return new CommandResult(String.format(MESSAGE_MARK_PERSON_SUCCESS, targetIndex));
+        return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, targetIndex));
 
     }
 

@@ -12,7 +12,7 @@ import seedu.flexitrack.commons.core.Config;
 import seedu.flexitrack.commons.core.LogsCenter;
 import seedu.flexitrack.commons.events.storage.DataSavingExceptionEvent;
 import seedu.flexitrack.commons.events.ui.JumpToListRequestEvent;
-import seedu.flexitrack.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.flexitrack.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.flexitrack.commons.events.ui.ShowHelpRequestEvent;
 import seedu.flexitrack.commons.util.StringUtil;
 import seedu.flexitrack.logic.Logic;
@@ -118,7 +118,7 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event){
+    private void handlePersonPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event){
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.loadTaskPage(event.getNewSelection());
     }

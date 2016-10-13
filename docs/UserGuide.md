@@ -115,7 +115,7 @@ Format: `mark [index]`
 > Mark the taks/event at the specified `index`. 
   The index refers to the index number shown in the most recent listing.<br>
   The index **must be a positive integer** 1, 2, 3, ...
-> The marked task will be deleted once the user exit the program 
+> The marked task will be deleted once the you exit the program 
 
 Examples: 
 * `mark 5`<br>	
@@ -143,7 +143,7 @@ Find and list free time slot in the schedule that is equal to or longer than the
 Format: `find time [number of hours] < [number of slots to find] >`  
 
 > If there is there is a time slot longer than the required free time slot, 
-	then the free time period will be return to the user
+	then the free time period will be return to you
 > By default, find time will only give a single free slot when the number of slots required is not keyed in.
 
 Examples: 
@@ -153,7 +153,7 @@ Examples:
 	You have a minimum of 5 hours free time slot between: Monday 2pm - 9pm, Tuesday 1pm - 6pm and Saturday 9am - 5pm. 
 
 #### Use shortcut to key in tasks and events details: `shortcut`
-Enable user to use a shorter command word.<br>
+Enable the use a shorter command word.<br>
 Format: `enable shortcut`
 Format: `disable shortcut` 
 

@@ -1,16 +1,15 @@
-package seedu.address.testutil;
+package seedu.address.model.person;
 
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.tag.UniqueTagList;
 
 import java.util.Objects;
 
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.person.*;
-
 /**
- * A mutable person object. For testing only.
+ * Represents a Person in the address book.
+ * Guarantees: details are present and not null, field values are validated.
  */
-public class TestPerson implements ReadOnlyTask {
+public class Task implements ReadOnlyTask {
 
     private Name name;
     private DateTimeInfo dueDate;
@@ -20,41 +19,25 @@ public class TestPerson implements ReadOnlyTask {
     private boolean isTask;
 
     private UniqueTagList tags;
-
     /**
      * Every field must be present and not null.
      */
-    public TestPerson(Name name, DateTimeInfo dueDate, DateTimeInfo startTime, DateTimeInfo endTime, UniqueTagList tags) {
+    public Task(Name name, DateTimeInfo dueDate, DateTimeInfo startTime, DateTimeInfo endTime, UniqueTagList tags) {
         assert !CollectionUtil.isAnyNull(name, tags);
         this.name = name;
         this.dueDate = dueDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
-        this.isTask = dueDate==null?false:true;
-        this.isEvent = startTime==null?false:true;
+        this.isTask = dueDate.isDateNull()?false:true;
+        this.isEvent = startTime.isDateNull()?false:true;
     }
-    public TestPerson() {
-        
-    }
+
     /**
      * Copy constructor.
      */
-    public TestPerson(ReadOnlyTask source) {
+    public Task(ReadOnlyTask source) {
         this(source.getName(), source.getDueDate(), source.getStartTime(), source.getEndTime(), source.getTags());
-    }
-    
-    public void setName(Name name) {
-        this.name = name;
-    }
-    public void setDueDate(DateTimeInfo date) {
-        this.name = name;
-    }
-    public void setStartTime(DateTimeInfo date) {
-        this.startTime = date;
-    }
-    public void setEndTime(DateTimeInfo date) {
-        this.endTime = date;
     }
 
     @Override
@@ -117,13 +100,8 @@ public class TestPerson implements ReadOnlyTask {
         return getAsText();
     }
 
-    public String getAddCommand() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("add " + this.getName().fullName + " ");
-        sb.append("p/" + this.getDueDate().setTime + " ");
-        sb.append("e/" + this.getStartTime().setTime + " ");
-        sb.append("a/" + this.getEndTime().setTime + " ");
-        this.getTags().getInternalList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
-        return sb.toString();
+    public void markAsDone() {
+        this.name.setName("(DONE) " +this.name); 
     }
+
 }

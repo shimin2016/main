@@ -5,24 +5,25 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.person.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Selects a person identified using it's last displayed index from the address book.
  */
-public class SelectCommand extends Command {
+public class MarkCommand extends Command {
 
     public final int targetIndex;
 
-    public static final String COMMAND_WORD = "select";
+    public static final String COMMAND_WORD = "mark";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the person identified by the index number used in the last person listing.\n"
+            + ": Marks the task identified by the index number used in the task listing.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SELECT_PERSON_SUCCESS = "Selected Task: %1$s";
+    public static final String MESSAGE_MARK_PERSON_SUCCESS = "Marked Task: %1$s";
 
-    public SelectCommand(int targetIndex) {
+    public MarkCommand(int targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -35,9 +36,10 @@ public class SelectCommand extends Command {
             indicateAttemptToExecuteIncorrectCommand();
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex - 1));
-        return new CommandResult(String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex));
+        
+        model.markTask(targetIndex - 1);
+                
+        return new CommandResult(String.format(MESSAGE_MARK_PERSON_SUCCESS, targetIndex));
 
     }
 

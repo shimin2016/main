@@ -8,10 +8,10 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class Name {
 
-    public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces or alphanumeric characters";
+    public static final String MESSAGE_NAME_CONSTRAINTS = "Task should be spaces or alphanumeric characters";
     public static final String NAME_VALIDATION_REGEX = "[\\p{Alnum} ]+";
 
-    public final String fullName;
+    public String fullName;
 
     /**
      * Validates given name.
@@ -34,6 +34,9 @@ public class Name {
         return test.matches(NAME_VALIDATION_REGEX);
     }
 
+    public void setName (String name){
+        this.fullName = name; 
+    }
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.ReadOnlyTask;
 
 public class PersonCard extends UiPart{
 
@@ -13,40 +13,42 @@ public class PersonCard extends UiPart{
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label title;
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
+    private Label dateTime;
     @FXML
     private Label tags;
 
-    private ReadOnlyPerson person;
+    private ReadOnlyTask task;
     private int displayedIndex;
 
     public PersonCard(){
 
     }
 
-    public static PersonCard load(ReadOnlyPerson person, int displayedIndex){
+    public static PersonCard load(ReadOnlyTask person, int displayedIndex){
         PersonCard card = new PersonCard();
-        card.person = person;
+        card.task = person;
         card.displayedIndex = displayedIndex;
         return UiPartLoader.loadUiPart(card);
     }
 
     @FXML
     public void initialize() {
-        name.setText(person.getName().fullName);
+    	String dateInfo;
+    	if(task.getIsTask()){
+    	    dateInfo = " by " + task.getDueDate();
+    	}else if(task.getIsEvent()){
+    	    dateInfo =  " from " + task.getStartTime() +" to "+ task.getEndTime();
+    	}else{
+    	    dateInfo = "";
+    	}
+    	dateTime.setText(dateInfo);
+        title.setText(task.getName().fullName);
         id.setText(displayedIndex + ". ");
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
-        tags.setText(person.tagsString());
+        tags.setText(task.tagsString());
     }
 
     public HBox getLayout() {

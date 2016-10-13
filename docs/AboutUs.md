@@ -19,28 +19,28 @@ Role: Tutor <br>
 #### [Guo Shimin](https://github.com/shimin2016)
 <img src="images/GuoShiMin.jpg" width="150"><br>
 Role: Developer <br>  
-Responsibilities: UI
+Responsibilities: Logic, Command, UI
 
 -----
 
 #### [Eddie Tan Yong Sheng](https://github.com/e-tys) 
 <img src="images/EddieTan.jpg" width="150"><br>
 Role: Developer <br>  
-Responsibilities: Data
+Responsibilities: Documentation, Testing
 
 -----
 
 #### [Antonia Devina](https://github.com/antoniadevina)
 <img src="images/Devina.jpg" width="150"><br>
 Role: Developer <br>  
-Responsibilities: Dev Ops
+Responsibilities: Integration, Testing
 
 -----
 
 #### [Jing Min](https://github.com/teojm37)
 <img src="images/JingMin.jpg" width="150"><br>
  Role: Developer <br>  
- Responsibilities: Threading
+ Responsibilities: Threading, Scheduling and tracking
  
  -----
 
@@ -48,6 +48,3 @@ Responsibilities: Dev Ops
 # Contributors
 
 We welcome contributions. See [Contact Us](ContactUs.md) page for more info.
-
-* [Akshay Narayan](https://github.com/se-edu/addressbook-level4/pulls?q=is%3Apr+author%3Aokkhoy)
-* [Sam Yong](https://github.com/se-edu/addressbook-level4/pulls?q=is%3Apr+author%3Amauris)

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * An Immutable AddressBook that is serializable to XML format
+ * An Immutable FlexiTrack that is serializable to XML format
  */
 @XmlRootElement(name = "FlexiTrack")
 public class XmlSerializableFlexiTrack implements ReadOnlyFlexiTrack {

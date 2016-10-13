@@ -6,7 +6,7 @@ import seedu.flexitrack.commons.core.Config;
 import seedu.flexitrack.commons.core.GuiSettings;
 import seedu.flexitrack.model.ReadOnlyFlexiTrack;
 import seedu.flexitrack.model.UserPrefs;
-import seedu.flexitrack.storage.XmlSerializableAddressBook;
+import seedu.flexitrack.storage.XmlSerializableFlexiTrack;
 import seedu.flexitrack.testutil.TestUtil;
 
 import java.util.function.Supplier;
@@ -35,7 +35,7 @@ public class TestApp extends MainApp {
         // If some initial local data has been provided, write those to the file
         if (initialDataSupplier.get() != null) {
             TestUtil.createDataFileWithData(
-                    new XmlSerializableAddressBook(this.initialDataSupplier.get()),
+                    new XmlSerializableFlexiTrack(this.initialDataSupplier.get()),
                     this.saveFileLocation);
         }
     }

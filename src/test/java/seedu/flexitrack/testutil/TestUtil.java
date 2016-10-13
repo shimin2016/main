@@ -20,7 +20,7 @@ import seedu.flexitrack.model.FlexiTrack;
 import seedu.flexitrack.model.tag.Tag;
 import seedu.flexitrack.model.tag.UniqueTagList;
 import seedu.flexitrack.model.task.*;
-import seedu.flexitrack.storage.XmlSerializableAddressBook;
+import seedu.flexitrack.storage.XmlSerializableFlexiTrack;
 
 import java.io.File;
 import java.io.IOException;
@@ -138,8 +138,8 @@ public class TestUtil {
         return new FlexiTrack(new UniqueTaskList(), new UniqueTagList());
     }
 
-    public static XmlSerializableAddressBook generateSampleStorageAddressBook() {
-        return new XmlSerializableAddressBook(generateEmptyAddressBook());
+    public static XmlSerializableFlexiTrack generateSampleStorageAddressBook() {
+        return new XmlSerializableFlexiTrack(generateEmptyAddressBook());
     }
 
     /**

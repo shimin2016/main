@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 /**
  * An Immutable AddressBook that is serializable to XML format
  */
-@XmlRootElement(name = "addressbook")
-public class XmlSerializableAddressBook implements ReadOnlyFlexiTrack {
+@XmlRootElement(name = "FlexiTrack")
+public class XmlSerializableFlexiTrack implements ReadOnlyFlexiTrack {
 
     @XmlElement
     private List<XmlAdaptedTask> persons;
@@ -33,12 +33,12 @@ public class XmlSerializableAddressBook implements ReadOnlyFlexiTrack {
     /**
      * Empty constructor required for marshalling
      */
-    public XmlSerializableAddressBook() {}
+    public XmlSerializableFlexiTrack() {}
 
     /**
      * Conversion
      */
-    public XmlSerializableAddressBook(ReadOnlyFlexiTrack src) {
+    public XmlSerializableFlexiTrack(ReadOnlyFlexiTrack src) {
         persons.addAll(src.getTaskList().stream().map(XmlAdaptedTask::new).collect(Collectors.toList()));
         tags = src.getTagList();
     }

@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 /**
- * A class to access AddressBook data stored as an xml file on the hard disk.
+ * A class to access FlexiTrack data stored as an xml file on the hard disk.
  */
 public class XmlFlexiTrackStorage implements FlexiTrackStorage {
 
@@ -36,29 +36,29 @@ public class XmlFlexiTrackStorage implements FlexiTrackStorage {
     public Optional<ReadOnlyFlexiTrack> readFlexiTrack(String filePath) throws DataConversionException, FileNotFoundException {
         assert filePath != null;
 
-        File addressBookFile = new File(filePath);
+        File flexiTrackFile = new File(filePath);
 
-        if (!addressBookFile.exists()) {
-            logger.info("AddressBook file "  + addressBookFile + " not found");
+        if (!flexiTrackFile.exists()) {
+            logger.info("FlexiTrack file "  + flexiTrackFile + " not found");
             return Optional.empty();
         }
 
-        ReadOnlyFlexiTrack addressBookOptional = XmlFileStorage.loadDataFromSaveFile(new File(filePath));
+        ReadOnlyFlexiTrack flexiTrackOptional = XmlFileStorage.loadDataFromSaveFile(new File(filePath));
 
-        return Optional.of(addressBookOptional);
+        return Optional.of(flexiTrackOptional);
     }
 
     /**
      * Similar to {@link #saveFlexiTrack(ReadOnlyFlexiTrack)}
      * @param filePath location of the data. Cannot be null
      */
-    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook, String filePath) throws IOException {
-        assert addressBook != null;
+    public void saveFlexiTrack(ReadOnlyFlexiTrack flexiTrack, String filePath) throws IOException {
+        assert flexiTrack != null;
         assert filePath != null;
 
         File file = new File(filePath);
         FileUtil.createIfMissing(file);
-        XmlFileStorage.saveDataToFile(file, new XmlSerializableAddressBook(addressBook));
+        XmlFileStorage.saveDataToFile(file, new XmlSerializableFlexiTrack(flexiTrack));
     }
 
     @Override
@@ -67,7 +67,7 @@ public class XmlFlexiTrackStorage implements FlexiTrackStorage {
     }
 
     @Override
-    public void saveFlexiTrack(ReadOnlyFlexiTrack addressBook) throws IOException {
-        saveFlexiTrack(addressBook, filePath);
+    public void saveFlexiTrack(ReadOnlyFlexiTrack flexiTrack) throws IOException {
+        saveFlexiTrack(flexiTrack, filePath);
     }
 }

@@ -21,9 +21,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * A GUI Test class for AddressBook.
+ * A GUI Test class for FlexiTrack.
  */
-public abstract class AddressBookGuiTest {
+public abstract class FlexiTrackGuiTest {
 
     /* The TestName Rule makes the current test name available inside test methods */
     @Rule
@@ -77,7 +77,7 @@ public abstract class AddressBookGuiTest {
      */
     protected FlexiTrack getInitialData() {
         FlexiTrack ab = TestUtil.generateEmptyFlexiTrack();
-        TypicalTestPersons.loadAddressBookWithSampleData(ab);
+        TypicalTestPersons.loadFlexiTrackWithSampleData(ab);
         return ab;
     }
 
@@ -97,7 +97,7 @@ public abstract class AddressBookGuiTest {
     /**
      * Asserts the person shown in the card is same as the given person
      */
-    public void assertMatching(ReadOnlyTask person, PersonCardHandle card) {
+    public void assertMatching(ReadOnlyTask person, TaskCardHandle card) {
         assertTrue(TestUtil.compareCardAndTask(card, person));
     }
 

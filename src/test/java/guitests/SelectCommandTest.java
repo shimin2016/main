@@ -6,7 +6,7 @@ import seedu.flexitrack.model.task.ReadOnlyTask;
 
 import static org.junit.Assert.assertEquals;
 
-public class SelectCommandTest extends AddressBookGuiTest {
+public class SelectCommandTest extends FlexiTrackGuiTest {
 
 
     @Test

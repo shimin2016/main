@@ -55,7 +55,7 @@ public class StorageManagerTest {
 
     @Test
     public void addressBookReadSave() throws Exception {
-        FlexiTrack original = new TypicalTestPersons().getTypicalAddressBook();
+        FlexiTrack original = new TypicalTestPersons().getTypicalFlexiTrack();
         storageManager.saveFlexiTrack(original);
         ReadOnlyFlexiTrack retrieved = storageManager.readFlexiTrack().get();
         assertEquals(original, new FlexiTrack(retrieved));

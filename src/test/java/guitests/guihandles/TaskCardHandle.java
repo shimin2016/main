@@ -6,9 +6,9 @@ import javafx.stage.Stage;
 import seedu.flexitrack.model.task.ReadOnlyTask;
 
 /**
- * Provides a handle to a person card in the person list panel.
+ * Provides a handle to a task card in the task list panel.
  */
-public class PersonCardHandle extends GuiHandle {
+public class TaskCardHandle extends GuiHandle {
     private static final String NAME_FIELD_ID = "#name";
     private static final String DATETIMEINFO_DUEDATE_ID = "#dueDate";
     private static final String DATETIMEINFO_STARTTIME_ID = "#startTime";
@@ -16,7 +16,7 @@ public class PersonCardHandle extends GuiHandle {
 
     private Node node;
 
-    public PersonCardHandle(GuiRobot guiRobot, Stage primaryStage, Node node){
+    public TaskCardHandle(GuiRobot guiRobot, Stage primaryStage, Node node){
         super(guiRobot, primaryStage, null);
         this.node = node;
     }
@@ -41,15 +41,15 @@ public class PersonCardHandle extends GuiHandle {
         return getTextFromLabel(DATETIMEINFO_ENDTIME_ID);
     }
 
-    public boolean isSamePerson(ReadOnlyTask person){
-        return getFullName().equals(person.getName().fullName) && getDueDate().equals(person.getDueDate().setTime)
-                && getStartTime().equals(person.getStartTime().setTime) && getEndTime().equals(person.getEndTime().setTime);
+    public boolean isSameTask(ReadOnlyTask task){
+        return getFullName().equals(task.getName().fullName) && getDueDate().equals(task.getDueDate().setTime)
+                && getStartTime().equals(task.getStartTime().setTime) && getEndTime().equals(task.getEndTime().setTime);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof PersonCardHandle) {
-            PersonCardHandle handle = (PersonCardHandle) obj;
+        if(obj instanceof TaskCardHandle) {
+            TaskCardHandle handle = (TaskCardHandle) obj;
             return getFullName().equals(handle.getFullName())
                     && getDueDate().equals(handle.getDueDate())
                     && getStartTime().equals(handle.getStartTime())

@@ -62,7 +62,7 @@ public class XmlAddressBookStorageTest {
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         String filePath = testFolder.getRoot().getPath() + "TempAddressBook.xml";
         TypicalTestPersons td = new TypicalTestPersons();
-        FlexiTrack original = td.getTypicalAddressBook();
+        FlexiTrack original = td.getTypicalFlexiTrack();
         XmlFlexiTrackStorage xmlAddressBookStorage = new XmlFlexiTrackStorage(filePath);
 
         //Save in new file and read back

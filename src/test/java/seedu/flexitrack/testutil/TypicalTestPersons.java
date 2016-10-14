@@ -9,8 +9,8 @@ import seedu.flexitrack.model.task.*;
  */
 public class TypicalTestPersons {
 
-    public static TestPerson alice, benson, carl, daniel, elle, fiona, george, hoon, ida;
-
+    public static TestTask alice, benson, carl, daniel, elle, fiona, george, hoon, ida;
+// TODO: change the test case 
     public TypicalTestPersons() {
         try {
             alice =  new PersonBuilder().withName("Alice Pauline").withAddress("123, Jurong West Ave 6, #08-111")
@@ -34,8 +34,8 @@ public class TypicalTestPersons {
         }
     }
 
-    public static void loadAddressBookWithSampleData(FlexiTrack ab) {
-
+    public static void loadFlexiTrackWithSampleData(FlexiTrack ab) {
+//TODO: change the add Task cases
         try {
             ab.addTask(new Task(alice));
             ab.addTask(new Task(benson));
@@ -49,13 +49,13 @@ public class TypicalTestPersons {
         }
     }
 
-    public TestPerson[] getTypicalPersons() {
-        return new TestPerson[]{alice, benson, carl, daniel, elle, fiona, george};
+    public TestTask[] getTypicalPersons() {
+        return new TestTask[]{alice, benson, carl, daniel, elle, fiona, george};
     }
 
-    public FlexiTrack getTypicalAddressBook(){
+    public FlexiTrack getTypicalFlexiTrack(){
         FlexiTrack ab = new FlexiTrack();
-        loadAddressBookWithSampleData(ab);
+        loadFlexiTrackWithSampleData(ab);
         return ab;
     }
 }

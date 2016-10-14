@@ -10,7 +10,7 @@ public class HelpWindowTest extends FlexiTrackGuiTest {
     @Test
     public void openHelpWindow() {
 
-        personListPanel.clickOnListView();
+        taskListPanel.clickOnListView();
 
         assertHelpWindowOpen(mainMenu.openHelpWindowUsingAccelerator());
 

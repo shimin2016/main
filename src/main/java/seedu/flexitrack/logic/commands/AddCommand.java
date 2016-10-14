@@ -22,8 +22,7 @@ public class AddCommand extends Command {
             + " Summer school from/ 01062016 to/ 01/072016"
             + "Parameters to add a task: [task title] by/ [due date]\n"
             + "Example: " + COMMAND_WORD
-            + " CS tutorial by/ 15102016\n"
-            + "Note: '/' must come with 'by/' or 'from/' or 'to/'.";
+            + " CS tutorial by/ 15102016\n";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the FlexiTrack";

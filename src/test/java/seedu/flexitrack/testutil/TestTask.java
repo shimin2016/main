@@ -8,9 +8,9 @@ import java.util.Objects;
 import seedu.flexitrack.commons.util.CollectionUtil;
 
 /**
- * A mutable person object. For testing only.
+ * A mutable task object. For testing only.
  */
-public class TestPerson implements ReadOnlyTask {
+public class TestTask implements ReadOnlyTask {
 
     private Name name;
     private DateTimeInfo dueDate;
@@ -24,7 +24,7 @@ public class TestPerson implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public TestPerson(Name name, DateTimeInfo dueDate, DateTimeInfo startTime, DateTimeInfo endTime, UniqueTagList tags) {
+    public TestTask(Name name, DateTimeInfo dueDate, DateTimeInfo startTime, DateTimeInfo endTime, UniqueTagList tags) {
         assert !CollectionUtil.isAnyNull(name, tags);
         this.name = name;
         this.dueDate = dueDate;
@@ -34,13 +34,13 @@ public class TestPerson implements ReadOnlyTask {
         this.isTask = dueDate==null?false:true;
         this.isEvent = startTime==null?false:true;
     }
-    public TestPerson() {
+    public TestTask() {
         
     }
     /**
      * Copy constructor.
      */
-    public TestPerson(ReadOnlyTask source) {
+    public TestTask(ReadOnlyTask source) {
         this(source.getName(), source.getDueDate(), source.getStartTime(), source.getEndTime(), source.getTags());
     }
     
@@ -93,7 +93,7 @@ public class TestPerson implements ReadOnlyTask {
     }
 
     /**
-     * Replaces this person's tags with the tags in the argument tag list.
+     * Replaces this task's tags with the tags in the argument tag list.
      */
     public void setTags(UniqueTagList replacement) {
         tags.setTags(replacement);

@@ -20,7 +20,7 @@ public class TestApp extends MainApp {
     public static final String SAVE_LOCATION_FOR_TESTING = TestUtil.getFilePathInSandboxFolder("sampleData.xml");
     protected static final String DEFAULT_PREF_FILE_LOCATION_FOR_TESTING = TestUtil.getFilePathInSandboxFolder("pref_testing.json");
     public static final String APP_TITLE = "Test App";
-    protected static final String ADDRESS_BOOK_NAME = "Test";
+    protected static final String FLEXI_TRACK_NAME = "Test";
     protected Supplier<ReadOnlyFlexiTrack> initialDataSupplier = () -> null;
     protected String saveFileLocation = SAVE_LOCATION_FOR_TESTING;
 
@@ -46,7 +46,7 @@ public class TestApp extends MainApp {
         config.setAppTitle(APP_TITLE);
         config.setFlexiTrackFilePath(saveFileLocation);
         config.setUserPrefsFilePath(DEFAULT_PREF_FILE_LOCATION_FOR_TESTING);
-        config.setFlexiTrackName(ADDRESS_BOOK_NAME);
+        config.setFlexiTrackName(FLEXI_TRACK_NAME);
         return config;
     }
 

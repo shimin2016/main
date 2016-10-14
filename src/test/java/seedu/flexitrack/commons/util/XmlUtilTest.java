@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import seedu.flexitrack.model.FlexiTrack;
 import seedu.flexitrack.storage.XmlSerializableFlexiTrack;
-import seedu.flexitrack.testutil.AddressBookBuilder;
+import seedu.flexitrack.testutil.FlexiTrackBuilder;
 import seedu.flexitrack.testutil.TestUtil;
 
 import javax.xml.bind.JAXBException;
@@ -19,8 +19,8 @@ public class XmlUtilTest {
     private static final String TEST_DATA_FOLDER = FileUtil.getPath("src/test/data/XmlUtilTest/");
     private static final File EMPTY_FILE = new File(TEST_DATA_FOLDER + "empty.xml");
     private static final File MISSING_FILE = new File(TEST_DATA_FOLDER + "missing.xml");
-    private static final File VALID_FILE = new File(TEST_DATA_FOLDER + "validAddressBook.xml");
-    private static final File TEMP_FILE = new File(TestUtil.getFilePathInSandboxFolder("tempAddressBook.xml"));
+    private static final File VALID_FILE = new File(TEST_DATA_FOLDER + "validFlexiTrack.xml");
+    private static final File TEMP_FILE = new File(TestUtil.getFilePathInSandboxFolder("tempFlexiTrack.xml"));
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -83,8 +83,8 @@ public class XmlUtilTest {
         assertEquals((new FlexiTrack(dataToWrite)).toString(),(new FlexiTrack(dataFromFile)).toString());
         //TODO: use equality instead of string comparisons
 
-        AddressBookBuilder builder = new AddressBookBuilder(new FlexiTrack());
-        dataToWrite = new XmlSerializableFlexiTrack(builder.withPerson(TestUtil.generateSamplePersonData().get(0)).withTag("Friends").build());
+        FlexiTrackBuilder builder = new FlexiTrackBuilder(new FlexiTrack());
+        dataToWrite = new XmlSerializableFlexiTrack(builder.withPerson(TestUtil.generateSampleTaskData().get(0)).withTag("Friends").build());
 
         XmlUtil.saveDataToFile(TEMP_FILE, dataToWrite);
         dataFromFile = XmlUtil.getDataFromFile(TEMP_FILE, XmlSerializableFlexiTrack.class);

@@ -10,41 +10,41 @@ import seedu.flexitrack.model.task.*;
  */
 public class PersonBuilder {
 
-    private TestTask person;
+    private TestTask task;
 
     public PersonBuilder() {
-        this.person = new TestTask();
+        this.task = new TestTask();
     }
 
     public PersonBuilder withName(String name) throws IllegalValueException {
-        this.person.setName(new Name(name));
+        this.task.setName(new Name(name));
         return this;
     }
 
     public PersonBuilder withTags(String ... tags) throws IllegalValueException {
         for (String tag: tags) {
-            person.getTags().add(new Tag(tag));
+            task.getTags().add(new Tag(tag));
         }
         return this;
     }
 
     public PersonBuilder withAddress(String address) throws IllegalValueException {
-        this.person.setDueDate(new DateTimeInfo(address));
+        this.task.setDueDate(new DateTimeInfo(address));
         return this;
     }
 
     public PersonBuilder withPhone(String phone) throws IllegalValueException {
-        this.person.setStartTime(new DateTimeInfo(phone));
+        this.task.setStartTime(new DateTimeInfo(phone));
         return this;
     }
 
     public PersonBuilder withEmail(String email) throws IllegalValueException {
-        this.person.setEndTime(new DateTimeInfo(email));
+        this.task.setEndTime(new DateTimeInfo(email));
         return this;
     }
 
     public TestTask build() {
-        return this.person;
+        return this.task;
     }
 
 }

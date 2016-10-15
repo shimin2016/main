@@ -19,12 +19,29 @@ public class DateTimeInfoParser {
             throw new IllegalValueException("error");
             //TODO: use MESSAGE_DATETIMEINFO_CONSTRAINTS instead of error
         }       
+
         this.timingInfo = dateParser.get(0).getDates().toString();
-        timingInfo = timingInfo.substring(5, 20);
+        if (timingInfo.DateTimeInfoParser.isTimeSpecified()){
+            timingInfo = timingInfo.substring(5, 11);
+            timingInfo = timingInfo + "08:00:00";
+        }else { 
+            timingInfo = timingInfo.substring(5, 20);
+        }
     }
     
     public String getParsedTimingInfo(){
         return timingInfo;
+    }
+    
+    public boolean isTimeSpecified(){ 
+        Parser parser = new Parser(); 
+        List<DateGroup> dateParser = parser.parse("now");
+        String timingInfoNow = dateParser.get(0).getDates().toString();
+        if (this.timingInfo.substring(12, 20).equals(timingInfoNow.substring(12, 20))){
+            return false; 
+        } else {
+            return true;
+        }
     }
     
     public static boolean isValidDateTimeInfo(List<DateGroup> test) {

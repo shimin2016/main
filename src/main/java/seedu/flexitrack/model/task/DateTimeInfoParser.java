@@ -20,7 +20,7 @@ public class DateTimeInfoParser {
             //TODO: use MESSAGE_DATETIMEINFO_CONSTRAINTS instead of error
         }       
         this.timingInfo = dateParser.get(0).getDates().toString();
-        System.out.println(timingInfo);
+        timingInfo = timingInfo.substring(5, 20);
     }
     
     public String getParsedTimingInfo(){

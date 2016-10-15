@@ -90,7 +90,7 @@ public class DateTimeInfoParser {
      * @param ending Time
      * @return 0 if it is after, 1 if it is before and 2 if they are the same 
      */
-    public String durationOfTheEvent (String startingTime, String endingTime){
+    public static String durationOfTheEvent (String startingTime, String endingTime){
         int months = monthsOfTheEvent (startingTime,endingTime);
         int days = daysOfTheEvent (startingTime,endingTime);
         int hours = hoursOfTheEvent (startingTime,endingTime);
@@ -100,74 +100,82 @@ public class DateTimeInfoParser {
     }
     
     
-    private String combineDuratingOfEvent(int months, int days, int hours, int minutes) {
+    private static String combineDuratingOfEvent(int months, int days, int hours, int minutes) {
         String duration = new String(""); 
         boolean lessThanAnHour=false; 
         boolean lessThanADay=false; 
         boolean lessThanAMonth=false; 
 
-        if (minutes != 0) { 
+        System.out.println("min: " + minutes +  "hours: " + hours);
+        if (minutes > 0 || minutes < 0) { 
             if (minutes < 0){
                 minutes = Math.floorMod(minutes, 60); 
                 lessThanAnHour = true; 
             }
-            duration = " " + minutes + "minute" + ((minutes == 1)?"":"s"); 
+            duration = " " + minutes + " minute" + ((minutes == 1)?"":"s"); 
         }
-        if (hours != 0){ 
+        if (hours > 0 || hours < 0){ 
             if (hours<0){ 
-                hours = Math.floorMod(hours, 60);
+                hours = Math.floorMod(hours, 24);
                 lessThanADay = true; 
             }
             if (lessThanAnHour) {
                 hours = hours - 1; 
             }
-            duration = " " + hours + "hours" + ((hours == 1)?"":"s" + duration); 
+            duration = " " + hours + " hour" + ((hours == 1)?"":"s" + duration); 
         }
         if (days != 0){ 
             if (days<0){ 
-                days = Math.floorMod(days, 60);
+                days = Math.floorMod(days, 30);
                 lessThanAMonth = true; 
             }
             if (lessThanADay) {
                 days = days - 1; 
             }
-            duration = days + "minute" + ((days == 1)?"":"s" + duration); 
+            duration = " " + days + " day" + ((days == 1)?"":"s" + duration); 
         }
-        if (months != 0){ 
+        if (months > 0 || months < 0){ 
             if (lessThanAMonth) {
                 months = months - 1; 
             }
-            duration = months + "minute" + ((months == 1)?"":"s" + duration ); 
+            duration = " " + months + " month" + ((months == 1)?"":"s" + duration ); 
         }
-        duration = "Event starts and end at the same time"; 
-        duration = duration.trim() + ".";
+        if (minutes == 0 && hours == 0 && days == 0 && months == 0) { 
+            duration = "Event starts and end at the same time."; 
+        } else { 
+            duration = "Duration of the event is: " + duration.trim() + ".";
+        }
         return duration;
 
     }
 
     private static int minutesOfTheEvent(String startingTime, String endingTime) {
-        int startMinute = Integer.parseInt(startingTime.substring(7,8));
-        int endMinute = Integer.parseInt(endingTime.substring(7,8)); 
+        int startMinute = Integer.parseInt(startingTime.substring(10,12));
+        int endMinute = Integer.parseInt(endingTime.substring(10,12)); 
+        System.out.println("start min: " + (endMinute - startMinute));
         return endMinute - startMinute;
     }
     
     private static int hoursOfTheEvent(String startingTime, String endingTime) {
-        int startHours = Integer.parseInt(startingTime.substring(7,8));
-        int endHours = Integer.parseInt(endingTime.substring(7,8)); 
+        int startHours = Integer.parseInt(startingTime.substring(7,9));
+        int endHours = Integer.parseInt(endingTime.substring(7,9)); 
+        System.out.println("end hours: " + (endHours - startHours));
         return endHours - startHours;
     }
-    
+
     private static int daysOfTheEvent(String startingTime, String endingTime) {
-        int startDate = Integer.parseInt(startingTime.substring(4,5));
-        int endDate = Integer.parseInt(endingTime.substring(4,5)); 
+        int startDate = Integer.parseInt(startingTime.substring(5,6));
+        int endDate = Integer.parseInt(endingTime.substring(5,6)); 
+        System.out.println("end days: " + (endDate - startDate));
         return endDate - startDate;
     }
 
     private static int monthsOfTheEvent(String startingTime, String endingTime) {
-        String startMonth = startingTime.substring(0,2);
-        String endMonth = endingTime.substring(0, 2); 
-        int monthDifference = whatMonth(startMonth) - whatMonth(endMonth); 
+        String startMonth = startingTime.substring(0,3);
+        String endMonth = endingTime.substring(0,3); 
+        int monthDifference = whatMonth(endMonth) - whatMonth(startMonth); 
         monthDifference = Math.floorMod(monthDifference, 12);
+        System.out.println("start month: " + (startMonth));
         return monthDifference;
     }
 

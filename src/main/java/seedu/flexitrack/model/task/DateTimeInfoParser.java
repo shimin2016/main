@@ -5,12 +5,13 @@ import java.util.List;
 import com.joestelmach.natty.DateGroup;
 import com.joestelmach.natty.Parser;
 
-
-
 import seedu.flexitrack.commons.exceptions.IllegalValueException;
 
+/**
+ * Represents the Parser and Time related DateTimeInfo. 
+ */
 public class DateTimeInfoParser {
-    
+
     public String timingInfo;
 
     public DateTimeInfoParser(String givenTime) throws IllegalValueException {
@@ -20,7 +21,14 @@ public class DateTimeInfoParser {
             throw new IllegalValueException("error");
             //TODO: use MESSAGE_DATETIMEINFO_CONSTRAINTS instead of error
         }       
+        setTimingInfo(dateParser);
+    }
 
+    /** 
+     * Set the timingInfo variable with the time specified
+     * @param dateParser
+     */
+    private void setTimingInfo(List<DateGroup> dateParser) {
         this.timingInfo = dateParser.get(0).getDates().toString();
         if (!isTimeSpecified(timingInfo)){
             timingInfo = timingInfo.substring(5, 12);
@@ -29,11 +37,11 @@ public class DateTimeInfoParser {
             timingInfo = timingInfo.substring(5, 17);
         }
     }
-    
-    public String getParsedTimingInfo(){
-        return timingInfo;
-    }
-    
+
+    /** 
+     * @param timingInfo
+     * @return true when the timing is specified
+     */
     public boolean isTimeSpecified(String timingInfo){ 
         Parser parser = new Parser(); 
         List<DateGroup> dateParser = parser.parse("now");
@@ -44,7 +52,12 @@ public class DateTimeInfoParser {
             return true;
         }
     }
-    
+
+    /** 
+     * Validate the timing inputed 
+     * @param test
+     * @return true if it is a valid timing
+     */
     public static boolean isValidDateTimeInfo(List<DateGroup> test) {
         if (!test.isEmpty()) {
             return true;
@@ -52,38 +65,43 @@ public class DateTimeInfoParser {
             return false;
         }
     }
-    
+
+    /** 
+     * Change the months which is specified in string to integer
+     * @param month
+     * @return month in integer
+     */
     public static int whatMonth(String month){ 
         switch (month){
-            case "Jan": 
-                return 1; 
-            case "Feb": 
-                return 2;
-            case "Mar": 
-                return 3;
-            case "Apr": 
-                return 4;
-            case "May": 
-                return 5;
-            case "Jun": 
-                return 6;
-            case "Jul": 
-                return 7;
-            case "Aug": 
-                return 8;
-            case "Sep": 
-                return 9;
-            case "Oct": 
-                return 10;
-            case "Nov": 
-                return 11;
-            case "Dec": 
-                return 12;
-            default: 
-                return 0; 
+        case "Jan": 
+            return 1; 
+        case "Feb": 
+            return 2;
+        case "Mar": 
+            return 3;
+        case "Apr": 
+            return 4;
+        case "May": 
+            return 5;
+        case "Jun": 
+            return 6;
+        case "Jul": 
+            return 7;
+        case "Aug": 
+            return 8;
+        case "Sep": 
+            return 9;
+        case "Oct": 
+            return 10;
+        case "Nov": 
+            return 11;
+        case "Dec": 
+            return 12;
+        default: 
+            return 0; 
         }
     }
-    
+
     /**
      * To check if the minute inputed in 'from' is before the minute inputed in 'to'
      * @param starting Time
@@ -95,18 +113,17 @@ public class DateTimeInfoParser {
         int days = daysOfTheEvent (startingTime,endingTime);
         int hours = hoursOfTheEvent (startingTime,endingTime);
         int minutes = minutesOfTheEvent (startingTime,endingTime);
-        
+
         return combineDuratingOfEvent(months,days,hours,minutes); 
     }
-    
-    
+
+
     private static String combineDuratingOfEvent(int months, int days, int hours, int minutes) {
         String duration = new String(""); 
         boolean lessThanAnHour=false; 
         boolean lessThanADay=false; 
         boolean lessThanAMonth=false; 
 
-        System.out.println("min: " + minutes +  "hours: " + hours);
         if (minutes > 0 || minutes < 0) { 
             if (minutes < 0){
                 minutes = Math.floorMod(minutes, 60); 
@@ -149,34 +166,57 @@ public class DateTimeInfoParser {
 
     }
 
+    /** 
+     * Calculate the minute difference between the end and the start
+     * @param startingTime
+     * @param endingTime
+     * @return the minute difference 
+     */
     private static int minutesOfTheEvent(String startingTime, String endingTime) {
         int startMinute = Integer.parseInt(startingTime.substring(10,12));
         int endMinute = Integer.parseInt(endingTime.substring(10,12)); 
-        System.out.println("start min: " + (endMinute - startMinute));
         return endMinute - startMinute;
     }
-    
+
+    /** 
+     * Calculate the hour difference between the end and the start
+     * @param startingTime
+     * @param endingTime
+     * @return the hour difference 
+     */
     private static int hoursOfTheEvent(String startingTime, String endingTime) {
         int startHours = Integer.parseInt(startingTime.substring(7,9));
         int endHours = Integer.parseInt(endingTime.substring(7,9)); 
-        System.out.println("end hours: " + (endHours - startHours));
         return endHours - startHours;
     }
 
+    /** 
+     * Calculate the day difference between the end and the start
+     * @param startingTime
+     * @param endingTime
+     * @return the day difference 
+     */
     private static int daysOfTheEvent(String startingTime, String endingTime) {
         int startDate = Integer.parseInt(startingTime.substring(5,6));
         int endDate = Integer.parseInt(endingTime.substring(5,6)); 
-        System.out.println("end days: " + (endDate - startDate));
         return endDate - startDate;
     }
 
+    /** 
+     * Calculate the month difference between the end and the start
+     * @param startingTime
+     * @param endingTime
+     * @return the month difference 
+     */
     private static int monthsOfTheEvent(String startingTime, String endingTime) {
         String startMonth = startingTime.substring(0,3);
         String endMonth = endingTime.substring(0,3); 
         int monthDifference = whatMonth(endMonth) - whatMonth(startMonth); 
         monthDifference = Math.floorMod(monthDifference, 12);
-        System.out.println("start month: " + (startMonth));
         return monthDifference;
     }
 
+    public String getParsedTimingInfo(){
+        return timingInfo;
+    }
 }

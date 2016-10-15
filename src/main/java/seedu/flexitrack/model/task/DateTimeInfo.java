@@ -50,6 +50,6 @@ public class DateTimeInfo {
 
     
     public boolean isDateNull() {
-        return this.setTime.equals("Feb 29 23:23:23");
+        return this.setTime.equals("Feb 29 23:23");
     }
 }

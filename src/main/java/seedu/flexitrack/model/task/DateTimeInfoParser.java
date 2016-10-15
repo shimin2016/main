@@ -84,33 +84,30 @@ public class DateTimeInfoParser {
         }
     }
     
-    public boolean isFromBeforeTo (String fromTiming, String toTiming){
-        //next year 
+    public String isFromBeforeTo (String fromTiming, String toTiming){
+        String output; 
         if (isFromMonthBeforeToMonth(fromTiming, toTiming) == 0 ) {
-            return false; 
+            return output = new String("This event will be happening next year!"); 
             // Warning this is due next year 
         } else if ( isFromMonthBeforeToMonth(fromTiming, toTiming) == 2){
             if (isFromDateBeforeToDate(fromTiming, toTiming) == 0){
-                return false;
-                // Warning this is due next year on the same month 
+                return output = new String("This event will be happening on the same month next year!"); 
             } else if ( isFromDateBeforeToDate(fromTiming, toTiming) == 2 ) { 
                 if ( isFromHourBeforeToHour(fromTiming, toTiming) == 0 ){
-                    return false; 
-                    // same day diff hour. due now or next your. do u want to change? 
+                    return output = new String("This event will be happening on the same date next year!"); 
                 }
-                else if ( isFromHourBeforeToHour(fromTiming, toTiming) == 0 ) { 
+                else if ( isFromHourBeforeToHour(fromTiming, toTiming) == 2 ) { 
                     if ( isFromMinuteBeforeToMinute(fromTiming, toTiming) == 0 ){
-                        return false; 
-                        // same hour different minute. due now or next your. do u want to change? 
+                        return output = new String("This event will be happening on the same date at this hout next year!"); 
                     }
-                    else if ( isFromMinuteBeforeToMinute(fromTiming, toTiming) == 0 ) { 
-                        return false;
-                        // same minute. due now or next your. do u want to change? 
+                    else if ( isFromMinuteBeforeToMinute(fromTiming, toTiming) == 2 ) { 
+                        return output = new String("This event will happen next year at this exact moment! Are you sure this is what you want?"
+                                +"\nTo change please use the command word 'edit'."); 
                     }
                 }
             }
         }
-        return true; 
+        return null; 
     }
     
     /**

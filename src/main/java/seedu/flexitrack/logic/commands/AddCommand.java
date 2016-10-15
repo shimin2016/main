@@ -54,7 +54,13 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             model.addTask(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            if (toAdd.getIsEvent()){ 
+                System.out.println(toAdd.getIsEvent());
+                return new CommandResult((String.format(MESSAGE_SUCCESS, toAdd)) + "\n" +
+                        DateTimeInfoParser.durationOfTheEvent(toAdd.getStartTime().toString(), toAdd.getEndTime().toString()));
+            } else { 
+                return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            }
         } catch (DuplicateTaskException e) {
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }

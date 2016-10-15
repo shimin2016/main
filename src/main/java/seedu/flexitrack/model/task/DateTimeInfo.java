@@ -22,8 +22,11 @@ public class DateTimeInfo {
         if (!isValidDateTimeInfo(givenTime)) {
             throw new IllegalValueException(MESSAGE_DATETIMEINFO_CONSTRAINTS);
         }
+        DateTimeInfoParser parsedTiming = new DateTimeInfoParser( givenTime);
         this.setTime = givenTime;
+        System.out.println(parsedTiming.getParsedTimingInfo());
 //        setDateTimeInfo(givenTime);
+        
 	}
 	
 	/**

@@ -21,8 +21,8 @@ public class DateTimeInfoParser {
         }       
 
         this.timingInfo = dateParser.get(0).getDates().toString();
-        if (timingInfo.DateTimeInfoParser.isTimeSpecified()){
-            timingInfo = timingInfo.substring(5, 11);
+        if (!isTimeSpecified(timingInfo)){
+            timingInfo = timingInfo.substring(5, 12);
             timingInfo = timingInfo + "08:00:00";
         }else { 
             timingInfo = timingInfo.substring(5, 20);
@@ -33,11 +33,11 @@ public class DateTimeInfoParser {
         return timingInfo;
     }
     
-    public boolean isTimeSpecified(){ 
+    public boolean isTimeSpecified(String timingInfo){ 
         Parser parser = new Parser(); 
         List<DateGroup> dateParser = parser.parse("now");
         String timingInfoNow = dateParser.get(0).getDates().toString();
-        if (this.timingInfo.substring(12, 20).equals(timingInfoNow.substring(12, 20))){
+        if (timingInfo.substring(12, 20).equals(timingInfoNow.substring(12, 20))){
             return false; 
         } else {
             return true;

@@ -31,7 +31,7 @@ Responsibilities: Documentation, Testing
 -----
 
 #### [Antonia Devina](https://github.com/antoniadevina)
-<img src="images/Devina.jpg" width="150"><br>
+<img src="images/AntoniaDevina.jpeg" width="150"><br>
 Role: Developer <br>  
 Responsibilities: Integration, Testing
 

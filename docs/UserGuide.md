@@ -2,6 +2,7 @@
 
 * [Quick Start](#quick-start)
 * [Features](#features)
+* [Time Format](#time-format)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -175,6 +176,30 @@ Format: `exit`
 #### Saving the data 
 Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
+
+## Time Format 
+FlexiTrack support various timing input. Here are some examples! 
+
+#### Exact timing 
+User Input | Timing information read by FlexiTrack
+---------- | :---------------
+21 June 4pm | Jun 21 16:00:00 
+1st January 7.20 | Jan 01 07:20
+April 22nd 5am | Apr 22 05:00
+
+#### Relative timing 
+If today is 1st of February a relative timing input is also possible with FlexiTrack
+
+User Input | Timing information read by FlexiTrack
+---------- | :---------------
+Tomorrow 4pm | Feb 02 16:00:00 
+Next week 720am | Feb 08 07:20
+3 weeks 2 pm  | Feb 22 14:00 
+next month 8am | Mar 01 08:00 
+
+#### Notes on FlexiTrack timing  
+1. FlexiTrack does not handle year. Thus all task must be with in 1 year (12 months) 
+2. When you do not specify the exact timing, FlexiTrack will assign your task to be 8am. 
 
 ## FAQ
 

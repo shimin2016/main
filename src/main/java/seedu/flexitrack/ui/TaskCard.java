@@ -46,7 +46,7 @@ public class TaskCard extends UiPart{
     	    dateInfo = "";
     	}
     	dateTime.setText(dateInfo);
-        title.setText(task.getName().fullName);
+        title.setText(task.getIsDone()?"(Done)":"" + task.getName().fullName );
         id.setText(displayedIndex + ". ");
         tags.setText(task.tagsString());
     }

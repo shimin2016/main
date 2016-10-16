@@ -37,5 +37,9 @@ public interface Model {
     /** Marks the given task as done 
      * @throws TaskNotFoundException */
     void markTask(int taskToMark);
+    
+    /** Unmarks the given task as done 
+     * @throws TaskNotFoundException */
+    void unmarkTask(int taskToMark);
 
 }

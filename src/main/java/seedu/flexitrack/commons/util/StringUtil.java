@@ -12,7 +12,7 @@ public class StringUtil {
     public static boolean equalsIgnoreCase(String source, String query) {
         String parsedQuery = query.replace("f/", "").trim();
         List<String> strings = Arrays.asList(source.toLowerCase());
-        return strings.stream().filter(s -> s.equalsIgnoreCase(parsedQuery.toLowerCase())).count() > 0;
+        return strings.stream().filter(s -> s.contains(parsedQuery.toLowerCase())).count() > 0;
     }
     
     public static boolean containsIgnoreCase(String source, String query) {

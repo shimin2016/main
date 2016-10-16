@@ -73,12 +73,15 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 > * Only full words will be matched e.g. `socc` will not match `soccer`
 > * Task or event matching at least one keyword will be returned (i.e. `OR` search).
     e.g. `soccer` will match `soccer training`
+> * Search by exact task name can be activated with the shortcut 'f/' before the task name.
 
 Examples: 
 * `find Soccer`<br>
   Returns `Soccer training` but not `soccer training`
 * `find assignment dinner mid-term`<br>
   Returns Any task/event having title `assignment`, `dinner`, or `mid-term`
+* `find attend CS2103 lecture`<br>
+  Returns Any task/event having exact title "attend CS2103 lecture"
 
 #### Deleting a person : `delete`
 Deletes the specified task/event from the FlexiTrack. Irreversible.<br>

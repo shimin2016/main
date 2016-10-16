@@ -270,7 +270,8 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | As a user | I want to find a free time slot in my schedule, | So that can plan my time better. 
 `* *` | As a user | I want to add a recurring task, | So that I do not have to keep adding the same task every week/day. 
 `* *` | As a user | I want to have an autocomplete search tool, | So that it will be easier for me to find a task. 
-`* *` | As a user | I want to find a task that is similar to what I’m searching, | So that I can see similar tasks. 
+`* *` | As a user | I want to find a task that is similar to what I’m searching, | So that I can see similar tasks.
+`* *` | As a user | I want to find a task with the exact name, | So that I can locate the exact task I'm looking for.
 `* *` | As a user | I want to launch the program with key combination (ALT+SPACE), | So that I can minimized time spent on clicking. 
 `* *` | As a user | I want to do everything by typing, | So that I can do everything much faster. 
 `* *` | As a user | I want to do multiple undo, | So that If I have a mistake i do not have to trace back and correct it manually. 

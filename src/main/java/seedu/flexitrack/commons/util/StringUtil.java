@@ -9,6 +9,12 @@ import java.util.List;
  * Helper functions for handling strings.
  */
 public class StringUtil {
+    public static boolean equalsIgnoreCase(String source, String query) {
+        String parsedQuery = query.replace("f/", "").trim();
+        List<String> strings = Arrays.asList(source.toLowerCase());
+        return strings.stream().filter(s -> s.equalsIgnoreCase(parsedQuery.toLowerCase())).count() > 0;
+    }
+    
     public static boolean containsIgnoreCase(String source, String query) {
         String[] split = source.toLowerCase().split("\\s+");
         List<String> strings = Arrays.asList(split);

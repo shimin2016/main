@@ -41,7 +41,7 @@ public class Parser {
             Pattern.compile("(?<name>.+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
-    public final static String EMPTY_TIME_INFO = "00000000";
+    public final static String EMPTY_TIME_INFO = "Feb 29 23:23:23";
     
     public Parser() {}
 

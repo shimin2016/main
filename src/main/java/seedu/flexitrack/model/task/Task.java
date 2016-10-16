@@ -17,6 +17,7 @@ public class Task implements ReadOnlyTask {
     private DateTimeInfo endTime;
     private boolean isEvent;
     private boolean isTask;
+    private boolean isDone = false;
 
     private UniqueTagList tags;
     /**
@@ -53,6 +54,11 @@ public class Task implements ReadOnlyTask {
     @Override
     public boolean getIsEvent() {
         return isEvent;
+    }
+    
+    @Override
+    public boolean getIsDone() {
+        return isDone;
     }
 
     @Override
@@ -100,10 +106,12 @@ public class Task implements ReadOnlyTask {
         return getAsText();
     }
 
-
+    private void setIsDone(boolean isDone) {
+        this.isDone = isDone;
+    }
     
-    public void markAsDone() {
-        this.name.setName("(DONE) " +this.name); 
+    public void markTask(boolean isDone) {
+       setIsDone(isDone);
     }
 
 }

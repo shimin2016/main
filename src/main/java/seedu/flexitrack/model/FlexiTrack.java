@@ -163,6 +163,10 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
     }
 
     public void markTask(int targetIndex) {
-        task.mark(targetIndex);
+        task.mark(targetIndex,Boolean.TRUE);
+    }
+    
+    public void unmarkTask(int targetIndex) {
+        task.mark(targetIndex, Boolean.FALSE);
     }
 }

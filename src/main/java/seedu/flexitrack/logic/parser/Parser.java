@@ -78,6 +78,9 @@ public class Parser {
             
         case MarkCommand.COMMAND_WORD:
             return prepareMark(arguments);
+            
+        case UnmarkCommand.COMMAND_WORD:
+            return prepareUnmark(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -91,8 +94,30 @@ public class Parser {
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
         }
-    }
+    }   
+    
+    /**
+     * Parses arguments in the context of the add task command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareUnmark(String args) {
+        Optional<Integer> index = parseIndex(args);
+        if(!index.isPresent()){
+            return new IncorrectCommand(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
+        }
 
+        return new UnmarkCommand(index.get());
+    }
+    
+    /**
+     * Parses arguments in the context of the add task command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
     private Command prepareMark(String args) {
 
         Optional<Integer> index = parseIndex(args);

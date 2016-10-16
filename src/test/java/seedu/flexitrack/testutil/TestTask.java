@@ -18,6 +18,7 @@ public class TestTask implements ReadOnlyTask {
     private DateTimeInfo endTime;
     private boolean isEvent;
     private boolean isTask;
+    private boolean isDone=false;
 
     private UniqueTagList tags;
 
@@ -70,6 +71,11 @@ public class TestTask implements ReadOnlyTask {
     @Override
     public boolean getIsEvent() {
         return isEvent;
+    }
+    
+    @Override
+    public boolean getIsDone() {
+        return isDone;
     }
 
     @Override

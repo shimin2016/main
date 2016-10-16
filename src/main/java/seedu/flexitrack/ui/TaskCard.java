@@ -37,6 +37,7 @@ public class TaskCard extends UiPart{
 
     @FXML
     public void initialize() {
+        String isDone = task.getIsDone()?"(Done)":"";
     	String dateInfo;
     	if(task.getIsTask()){
     	    dateInfo = " by " + task.getDueDate();
@@ -46,7 +47,7 @@ public class TaskCard extends UiPart{
     	    dateInfo = "";
     	}
     	dateTime.setText(dateInfo);
-        title.setText(task.getName().fullName);
+        title.setText(isDone + task.getName().fullName);
         id.setText(displayedIndex + ". ");
         tags.setText(task.tagsString());
     }

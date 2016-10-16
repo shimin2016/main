@@ -83,6 +83,11 @@ public class ModelManager extends ComponentManager implements Model {
         flexiTracker.markTask(targetIndex);
         indicateFlexiTrackerChanged();
     }
+    @Override
+    public void unmarkTask(int targetIndex) {
+        flexiTracker.unmarkTask(targetIndex);
+        indicateFlexiTrackerChanged();
+    }
 
     //=========== Filtered Tasks List Accessors ===============================================================
 

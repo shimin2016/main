@@ -14,6 +14,7 @@ public interface ReadOnlyTask {
     DateTimeInfo getEndTime();
     boolean getIsTask();
     boolean getIsEvent();
+    boolean getIsDone();
 
     /**
      * The returned TagList is a deep copy of the internal TagList,
@@ -40,7 +41,7 @@ public interface ReadOnlyTask {
         final StringBuilder builder = new StringBuilder();
         String text = (getIsTask()||getIsEvent())?getIsTask()? " by " + getDueDate() :
            " from " + getStartTime() + " to " + getEndTime() :"";
-        builder.append(getName())
+        builder.append(getIsDone()?"(Done)" : "" + getName())
                 .append(text)
                 .append(" Tags: ");
         getTags().forEach(builder::append);

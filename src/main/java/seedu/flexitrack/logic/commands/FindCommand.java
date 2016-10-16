@@ -34,7 +34,6 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        System.out.println(keywords);
         model.updateFilteredTaskList(keywords);
         return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
     }

@@ -8,7 +8,7 @@ public class CommandBoxTest extends FlexiTrackGuiTest {
 
     @Test
     public void commandBox_commandSucceeds_textCleared() {
-        commandBox.runCommand(td.benson.getAddCommand());
+        commandBox.runCommand(td.homework2.getAddCommand());
         assertEquals(commandBox.getCommandInput(), "");
     }
 

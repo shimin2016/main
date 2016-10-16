@@ -4,12 +4,6 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ## Project Team
 
-#### [Damith C. Rajapakse](http://www.comp.nus.edu.sg/~damithch) <br>
-<img src="images/DamithRajapakse.jpg" width="150"><br>
-**Role**: Project Advisor
-
------
-
 #### [Chan Jun Wei]()
 <img src="images/ChanJunWei.jpg" width="150"><br>
 Role: Tutor <br>  
@@ -33,14 +27,14 @@ Responsibilities: Documentation, Testing
 #### [Antonia Devina](https://github.com/antoniadevina)
 <img src="images/AntoniaDevina.jpeg" width="150"><br>
 Role: Developer <br>  
-Responsibilities: Integration, Testing
+Responsibilities: Integration, Scheduling and tracking
 
 -----
 
 #### [Jing Min](https://github.com/teojm37)
 <img src="images/JingMin.jpg" width="150"><br>
  Role: Developer <br>  
- Responsibilities: Threading, Scheduling and tracking
+ Responsibilities: Threading, Testing
  
  -----
 

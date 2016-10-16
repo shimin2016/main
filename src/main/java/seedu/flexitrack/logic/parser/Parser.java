@@ -40,7 +40,14 @@ public class Parser {
     private static final Pattern TASK_FLOATING_TYPE_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>.+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
-
+    
+    private static final Pattern EDIT_COMMAND_FORMAT = Pattern.compile("(?<index>[0-9]+)(?<arguments>.*)");
+    
+    private static final Pattern EDIT_ARGS_NAME = Pattern.compile("n/(?<name>.+)");
+    private static final Pattern EDIT_ARGS_DUEDATE = Pattern.compile("by/(?<dueDate>[^/]+)");
+    private static final Pattern EDIT_ARGS_STARTTIME = Pattern.compile("from/(?<startTime>[^/]+)");
+    private static final Pattern EDIT_ARGS_ENDTIME = Pattern.compile("to/(?<endTime>[^/]+)");
+    
     public final static String EMPTY_TIME_INFO = "Feb 29 23:23:23";
     
     public Parser() {}
@@ -67,6 +74,9 @@ public class Parser {
         case SelectCommand.COMMAND_WORD:
             return prepareSelect(arguments);
 
+        case EditCommand.COMMAND_WORD:
+            return prepareEdit(arguments);
+            
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
 
@@ -96,7 +106,63 @@ public class Parser {
         }
     }   
     
-    /**
+    private Command prepareEdit(String arguments) {
+		
+    	int index;
+    	String args;
+    	String[] passing = new String[4];
+    	
+    	final Matcher matcherEdit = EDIT_COMMAND_FORMAT.matcher(arguments.trim());
+    	
+    	if(!matcherEdit.matches()){
+    		return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+    	}else{
+    		index = Integer.parseInt(matcherEdit.group("index"));
+    		args = matcherEdit.group("arguments");
+    	}
+    	
+    	final Matcher matcherName = EDIT_ARGS_NAME.matcher(args.trim());
+    	final Matcher matcherDueDate = EDIT_ARGS_DUEDATE.matcher(args.trim());
+    	final Matcher matcherStartTime = EDIT_ARGS_STARTTIME.matcher(args.trim());
+    	final Matcher matcherEndTime = EDIT_ARGS_ENDTIME.matcher(args.trim());
+    	
+    	boolean namePresent = matcherName.find();
+    	boolean dueDatePresent = matcherDueDate.find();
+    	boolean startTimePresent = matcherStartTime.find();
+		boolean endTimePresent = matcherEndTime.find();
+    	
+    	if(namePresent){
+    		passing[0] = matcherName.group("name");
+    	}else{
+    		passing[0] = null;
+    	}
+    	
+    	if(dueDatePresent){
+    		if(startTimePresent || endTimePresent){
+    			return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+    		}else{
+    			passing[1] = matcherDueDate.group("dueDate");
+    		}
+    	}else{
+    		passing[1] = null;
+    	}
+    	
+    	if(startTimePresent){
+    		passing [2] = matcherStartTime.group("startTime");
+    	}else{
+    		passing [2] = null;
+    	}
+    	
+    	if(endTimePresent){
+    		passing [3] = matcherEndTime.group("endTime");
+    	}else{
+    		passing [3] = null;
+    	}
+    		
+    	return new EditCommand(index, passing);
+	}
+
+	/**
      * Parses arguments in the context of the add task command.
      *
      * @param args full command args string

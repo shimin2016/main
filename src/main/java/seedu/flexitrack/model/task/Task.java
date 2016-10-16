@@ -1,5 +1,6 @@
 package seedu.flexitrack.model.task;
 
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
 import seedu.flexitrack.commons.util.CollectionUtil;
 import seedu.flexitrack.model.tag.UniqueTagList;
 
@@ -113,5 +114,20 @@ public class Task implements ReadOnlyTask {
     public void markTask(boolean isDone) {
        setIsDone(isDone);
     }
+    
+    public void setName(String name){
+    	this.name.setName(name);
+    }
+    
+    public void setDueDate(String dueDate) throws IllegalValueException{
+    	this.dueDate = new DateTimeInfo(dueDate);
+    }
 
+    public void setStartTime(String startDate) throws IllegalValueException{
+    	this.startTime = new DateTimeInfo(startDate);
+    }
+    
+    public void setEndTime(String endDate) throws IllegalValueException{
+    	this.endTime = new DateTimeInfo(endDate);
+    }
 }

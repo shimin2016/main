@@ -1,12 +1,15 @@
 package seedu.flexitrack.model;
 
 import javafx.collections.ObservableList;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
 import seedu.flexitrack.model.tag.Tag;
 import seedu.flexitrack.model.tag.UniqueTagList;
 import seedu.flexitrack.model.task.ReadOnlyTask;
 import seedu.flexitrack.model.task.Task;
 import seedu.flexitrack.model.task.UniqueTaskList;
 import seedu.flexitrack.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.flexitrack.model.task.UniqueTaskList.IllegalEditException;
+import seedu.flexitrack.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -82,6 +85,15 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
         task.add(p);
     }
 
+    /**
+     * Edits a Task in the tasks tracker.
+     * @throws UniqueTaskList.DuplicateTaskException if an equivalent task already exists.
+     * @throws TaskNotFoundException if specified task is not found.
+     */
+    public void editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException{
+        task.edit(taskToEdit, args);
+    }
+    
     /**
      * Ensures that every tag in this task:
      *  - exists in the master list {@link #tags}

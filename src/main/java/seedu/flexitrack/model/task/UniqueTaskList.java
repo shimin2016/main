@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.flexitrack.commons.util.CollectionUtil;
 import seedu.flexitrack.commons.exceptions.DuplicateDataException;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
 
 import java.util.*;
 
@@ -31,6 +32,8 @@ public class UniqueTaskList implements Iterable<Task> {
      * there is no such matching person in the list.
      */
     public static class TaskNotFoundException extends Exception {}
+    
+    public static class IllegalEditException extends Exception {}
 
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
 
@@ -103,4 +106,44 @@ public class UniqueTaskList implements Iterable<Task> {
         internalList.set(targetIndex, markTask);
 
     }
+    
+    public void edit(int targetIndex, String[] args) throws IllegalEditException, TaskNotFoundException, IllegalValueException {
+        assert targetIndex >= 0; 
+        Task editTask;
+        
+        try{
+        	editTask = internalList.get(targetIndex);
+        }catch(IndexOutOfBoundsException ioobe){
+        	throw new TaskNotFoundException();
+        }
+        
+        for(int i = 0; i<args.length; i++){
+        	if(!(args[i]==null)){
+        		switch(i){
+        		case 0: editTask.setName(args[i]);break;
+        		case 1: 
+        			if(editTask.getIsTask()){
+        				editTask.setDueDate(args[i]);
+        			}else{
+        				throw new IllegalEditException();
+        			}break;
+        		case 2:
+        			if(editTask.getIsEvent()){
+        				editTask.setStartTime(args[i]);
+        			}else{
+        				throw new IllegalEditException();
+        			}break;
+        		case 3:
+        			if(editTask.getIsEvent()){
+        				editTask.setEndTime(args[i]);
+        			}else{
+        				throw new IllegalEditException();
+        			}break;
+        		}
+        	}
+        }
+        internalList.set(targetIndex, editTask);
+
+    }
+    
 }

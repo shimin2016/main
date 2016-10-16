@@ -8,8 +8,10 @@ import seedu.flexitrack.model.task.ReadOnlyTask;
 import seedu.flexitrack.model.task.Task;
 import seedu.flexitrack.model.task.UniqueTaskList;
 import seedu.flexitrack.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.flexitrack.model.task.UniqueTaskList.IllegalEditException;
 import seedu.flexitrack.model.task.UniqueTaskList.TaskNotFoundException;
 import seedu.flexitrack.commons.events.model.FlexiTrackChangedEvent;
+import seedu.flexitrack.commons.exceptions.IllegalValueException;
 import seedu.flexitrack.commons.core.ComponentManager;
 
 import java.util.Set;
@@ -88,6 +90,12 @@ public class ModelManager extends ComponentManager implements Model {
         flexiTracker.unmarkTask(targetIndex);
         indicateFlexiTrackerChanged();
     }
+    
+    @Override
+	public void editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException {
+    	flexiTracker.editTask(taskToEdit, args);
+        indicateFlexiTrackerChanged();
+	}
 
     //=========== Filtered Tasks List Accessors ===============================================================
 
@@ -168,5 +176,7 @@ public class ModelManager extends ComponentManager implements Model {
             return "name=" + String.join(", ", nameKeyWords);
         }
     }
+
+	
 
 }

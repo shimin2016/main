@@ -131,6 +131,10 @@ public class Parser {
     	boolean startTimePresent = matcherStartTime.find();
 		boolean endTimePresent = matcherEndTime.find();
     	
+		if(!namePresent && !dueDatePresent && !startTimePresent && !endTimePresent){
+			return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+		}
+		
     	if(namePresent){
     		passing[0] = matcherName.group("name");
     	}else{

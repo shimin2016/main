@@ -123,11 +123,11 @@ public class Task implements ReadOnlyTask {
     	this.dueDate = new DateTimeInfo(dueDate);
     }
 
-    public void setStartTime(String startDate) throws IllegalValueException{
-    	this.startTime = new DateTimeInfo(startDate);
+    public void setStartTime(String startTime) throws IllegalValueException{
+    	this.startTime = new DateTimeInfo(startTime);
     }
     
-    public void setEndTime(String endDate) throws IllegalValueException{
-    	this.endTime = new DateTimeInfo(endDate);
+    public void setEndTime(String endTime) throws IllegalValueException{
+    	this.endTime = new DateTimeInfo(endTime);
     }
 }

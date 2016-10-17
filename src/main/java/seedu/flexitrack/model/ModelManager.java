@@ -92,9 +92,10 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     @Override
-	public void editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException {
-    	flexiTracker.editTask(taskToEdit, args);
+	public String editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException {
+    	String duration = flexiTracker.editTask(taskToEdit, args);
         indicateFlexiTrackerChanged();
+        return duration;
 	}
 
     //=========== Filtered Tasks List Accessors ===============================================================

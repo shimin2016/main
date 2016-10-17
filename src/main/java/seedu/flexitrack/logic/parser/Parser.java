@@ -43,10 +43,10 @@ public class Parser {
     
     private static final Pattern EDIT_COMMAND_FORMAT = Pattern.compile("(?<index>[0-9]+)(?<arguments>.*)");
     
-    private static final Pattern EDIT_ARGS_NAME = Pattern.compile("n/(?<name>.+)");
-    private static final Pattern EDIT_ARGS_DUEDATE = Pattern.compile("by/(?<dueDate>[^/]+)");
-    private static final Pattern EDIT_ARGS_STARTTIME = Pattern.compile("from/(?<startTime>[^/]+)");
-    private static final Pattern EDIT_ARGS_ENDTIME = Pattern.compile("to/(?<endTime>[^/]+)");
+    private static final Pattern EDIT_ARGS_NAME = Pattern.compile("n/\\s*(?<name>.+)");
+    private static final Pattern EDIT_ARGS_DUEDATE = Pattern.compile("by/\\s*(?<dueDate>[^/]+)");
+    private static final Pattern EDIT_ARGS_STARTTIME = Pattern.compile("from/\\s*(?<startTime>[^/]+)");
+    private static final Pattern EDIT_ARGS_ENDTIME = Pattern.compile("to/\\s*(?<endTime>[^/]+)");
     
     public final static String EMPTY_TIME_INFO = "Feb 29 23:23:23";
     

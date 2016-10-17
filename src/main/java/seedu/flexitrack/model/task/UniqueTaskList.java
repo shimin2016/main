@@ -107,7 +107,7 @@ public class UniqueTaskList implements Iterable<Task> {
 
     }
     
-    public void edit(int targetIndex, String[] args) throws IllegalEditException, TaskNotFoundException, IllegalValueException {
+    public String edit(int targetIndex, String[] args) throws IllegalEditException, TaskNotFoundException, IllegalValueException {
         assert targetIndex >= 0; 
         Task editTask;
         
@@ -143,6 +143,12 @@ public class UniqueTaskList implements Iterable<Task> {
         	}
         }
         internalList.set(targetIndex, editTask);
+        
+        if(editTask.getIsEvent()){
+        	return DateTimeInfoParser.durationOfTheEvent(editTask.getStartTime().toString(), editTask.getEndTime().toString());
+        }else{
+        	return "";
+        }
 
     }
     

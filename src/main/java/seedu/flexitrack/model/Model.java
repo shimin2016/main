@@ -45,6 +45,6 @@ public interface Model {
     
     /** Edits the given task 
      * @throws TaskNotFoundException*/
-    void editTask(int taskToEdit, String[] args) throws UniqueTaskList.TaskNotFoundException, UniqueTaskList.IllegalEditException, IllegalValueException;
+    String editTask(int taskToEdit, String[] args) throws UniqueTaskList.TaskNotFoundException, UniqueTaskList.IllegalEditException, IllegalValueException;
 
 }

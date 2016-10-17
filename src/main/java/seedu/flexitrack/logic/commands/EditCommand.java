@@ -46,8 +46,10 @@ public class EditCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
+        String duration = null;
+        
         try {
-            model.editTask(targetIndex - 1, arguments);
+            duration = model.editTask(targetIndex - 1, arguments);
         } catch (TaskNotFoundException pnfe) {
         	indicateAttemptToExecuteIncorrectCommand();
         	return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
@@ -58,8 +60,7 @@ public class EditCommand extends Command {
         	assert false: "Illegal value entered";
         }
 
-        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, targetIndex)+ "\n" +
-                DateTimeInfoParser.durationOfTheEvent(lastShownList.get(targetIndex).getStartTime().toString(), lastShownList.get(targetIndex).getEndTime().toString()));
+        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, lastShownList.get(targetIndex - 1).getName()) + "\n" + duration);
     }
 
 }

@@ -90,8 +90,8 @@ public class FlexiTrack implements ReadOnlyFlexiTrack {
      * @throws UniqueTaskList.DuplicateTaskException if an equivalent task already exists.
      * @throws TaskNotFoundException if specified task is not found.
      */
-    public void editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException{
-        task.edit(taskToEdit, args);
+    public String editTask(int taskToEdit, String[] args) throws TaskNotFoundException, IllegalEditException, IllegalValueException{
+        return task.edit(taskToEdit, args);
     }
     
     /**

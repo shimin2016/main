@@ -197,8 +197,8 @@ public class DateTimeInfoParser {
      * @return the day difference 
      */
     private static int daysOfTheEvent(String startingTime, String endingTime) {
-        int startDate = Integer.parseInt(startingTime.substring(5,6));
-        int endDate = Integer.parseInt(endingTime.substring(5,6)); 
+        int startDate = Integer.parseInt(startingTime.substring(4,6));
+        int endDate = Integer.parseInt(endingTime.substring(4,6)); 
         return endDate - startDate;
     }
 
